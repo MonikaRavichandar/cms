@@ -165,15 +165,15 @@
   ** Clone repository at Gitbash **
     * Open https://console.aws.amazon.com/codecommit
     * Use the following URL to access your repository
-    * https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/MLPXX/browse?region=us-east-2#
+    * https://us-east-2.console.aws.amazon.com/codesuite/codecommit/repositories/MLP192/browse?region=us-east-2#
     * Choose Clone URL, and then copy the SSH URL.    
     * Go back to Gitbash and clone the project
     * `pwd` -- Check and verify that the current working directory is C:\users\Hvuser/workspace
-    * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/MLPXX `
-    * `cd MLPXX`
+    * `git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/MLP192 `
+    * `cd MLP192`
     * `git status`
   * open Visual Studio (VS) Code
-    * Open folder c:\users\Hvuser\workspace\MLPXX
+    * Open folder c:\users\Hvuser\workspace\MLP192
     * Browse the directories to understand the repository structure
 
 # Workshop material - Day #2 - MySQL Workbench/Cli/Curl/Browser to interact w/ application
@@ -181,9 +181,9 @@
   * Open MySQL Workbench
   * Open the localhost connection
     * Mac OS: `export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS` and then you can use the command line `mysql -u root -phexawareftpdev`
-  * `CREATE DATABASE MLPXX;` and click the lightning button
-  * `CREATE USER 'MLPXX'@'localhost' IDENTIFIED BY 'MLPXX';`
-  * `GRANT ALL ON MLPXX.* TO 'MLPXX'@'localhost';`
+  * `CREATE DATABASE MLP192;` and click the lightning button
+  * `CREATE USER 'MLP192'@'localhost' IDENTIFIED BY 'MLP192';`
+  * `GRANT ALL ON MLP192.* TO 'MLP192'@'localhost';`
   * Open database/database.ddl in VS code
   * Copy the entire contents to MySQL Workbench
   * Execute the ddl 
@@ -199,22 +199,22 @@
     * At the end of all the playing around, leave the database with 5 records with ids (101,102..
     
   * Next, we will build and run the java code
-  * go to gitbash, ensure you are in workspace/MLPXX
+  * go to gitbash, ensure you are in workspace/MLP192
   * `cd restservice/canteenmanagement`
   * `mvn compile`
-  * `mvn exec:java -Dexec.mainClass=com.hexaware.MLPXX.util.CliMain`
+  * `mvn exec:java -Dexec.mainClass=com.hexaware.MLP192.util.CliMain`
     * As expected, the cli displays only the food id for the MENU; we need to do some code changes before the other attributes 
     * such as name will start appearing in the cli. But before that we will test the application as a REST service.
     * Due to a bug in the database connection code, after exiting, there will be an error with a stack trace. Ignore this error.
   * Build the war file as follows:
     * `mvn package` -- This build a war (java web archive with the code for the REST service)
-    * `cp target/MLPXX-0.0.1-SNAPSHOT.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/MLPXX.war`
+    * `cp target/MLP192-0.0.1-SNAPSHOT.war /D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16/webapps/MLP192.war`
     * start tomcat and tail its logs
       * `cd D/FTP/apache-tomcat-8.5.16-windows-x64/apache-tomcat-8.5.16`
       * `rm -rf logs/*`
       * `./bin/startup.sh`
       * `tail -f logs/*`
-      * `curl -vvv http://localhost:8080/MLPXX/api/menu`
+      * `curl -vvv http://localhost:8080/MLP192/api/menu`
       * `cd ../../webui/lmApp/`
    * `npm install`
    * `ng serve`
@@ -265,7 +265,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
   * Create a free e-mail id at gmail with user name {your Hexaware e-mail id}.hexaware. e.g., KrishnaKumar.hexaware@gmail.com  and
   * use this id for Trello login 
 
-  * Create a board for your project as "MLPXX"
+  * Create a board for your project as "MLP192"
 
   * [Team member #1] Create a "Product Backlog" [List] to describe a  user story : "Demonstrate team familiarity with git workflow, both as a developer and as a reviewer"
 
@@ -279,7 +279,7 @@ Play as many rounds as needed till everyone is comfortable with git conflict res
      * Summary: "As a git user, I, [full name], will demo my ability to use git as a review by reviewing and merging another team member's pull request of a tictactoe board change"
      * Assign these user stories to you  (develoepr/reviewer) and your neighbour (reviwer/develoepr) 
   * [Team member #3]
-     * Create "Current Sprint" with "MLPXX Sprint 1" as label 
+     * Create "Current Sprint" with "MLP192 Sprint 1" as label 
      * Drag all stories /task into “To do” list
        * Due Date: start date being today and end date being tomorrow
        

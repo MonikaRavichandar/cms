@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hexaware</groupId>
-  <artifactId>MLPXX</artifactId>
+  <artifactId>MLP192</artifactId>
   <version>0.0.1-${build.number}</version>
   <packaging>war</packaging>
-  <name>MLPXX</name>
+  <name>MLP192</name>
   <url>http://maven.apache.org</url>
  <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,7 +98,7 @@
             <systemPropertyVariables>
               <coverage-output>html</coverage-output>
               <coverage-metrics>all</coverage-metrics>
-              <coverage-classes>com.hexaware.MLPXX.model.*</coverage-classes>
+              <coverage-classes>com.hexaware.MLP192.model.*</coverage-classes>
               <coverage-check>85</coverage-check>
             </systemPropertyVariables>
           </configuration>

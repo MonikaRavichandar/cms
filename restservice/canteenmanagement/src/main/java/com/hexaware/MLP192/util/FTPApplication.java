@@ -1,4 +1,4 @@
-package com.hexaware.MLPXX.util;
+package com.hexaware.MLP192.util;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
@@ -41,7 +41,7 @@ public class FTPApplication extends ResourceConfig {
    */
   public FTPApplication() {
     // Register resources and providers using package-scanning.
-    packages("com.hexaware.MLPXX.util");
+    packages("com.hexaware.MLP192.util");
     register(new CORSFilter());
     // Enable Tracing support.
     property(ServerProperties.TRACING, "ALL");

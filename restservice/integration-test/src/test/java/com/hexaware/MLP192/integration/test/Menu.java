@@ -1,6 +1,6 @@
-package com.hexaware.MLPXX.integration.test;
+package com.hexaware.MLP192.integration.test;
 import java.util.Objects;
-import com.hexaware.MLPXX.integration.test.CommonUtil;
+import com.hexaware.MLP192.integration.test.CommonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 

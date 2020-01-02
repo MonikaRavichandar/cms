@@ -1,4 +1,4 @@
-package com.hexaware.MLPXX.integration.test;
+package com.hexaware.MLP192.integration.test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,7 +17,7 @@ public class CommonUtil {
     static {
         host = System.getProperty("service.host", "localhost");
         port = System.getProperty("service.port", "8080");
-        webapp = System.getProperty("service.webapp", "MLPXX");
+        webapp = System.getProperty("service.webapp", "MLP192");
         uri_prefix = "http://" + host + ":" + port + "/" + webapp;
     }
     public static URI getURI(String path) throws URISyntaxException {

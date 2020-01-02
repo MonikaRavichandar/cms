@@ -1,7 +1,7 @@
-package com.hexaware.MLPXX.util;
+package com.hexaware.MLP192.util;
 import java.util.Scanner;
-import com.hexaware.MLPXX.factory.MenuFactory;
-import com.hexaware.MLPXX.model.Menu;
+import com.hexaware.MLP192.factory.MenuFactory;
+import com.hexaware.MLP192.model.Menu;
 /**
  * CliMain used as Client interface for java coading.
  * @author hexware

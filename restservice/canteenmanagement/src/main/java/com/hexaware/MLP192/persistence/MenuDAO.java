@@ -1,8 +1,8 @@
-package com.hexaware.MLPXX.persistence;
+package com.hexaware.MLP192.persistence;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.util.List;
-import com.hexaware.MLPXX.model.Menu;
+import com.hexaware.MLP192.model.Menu;
 /**
  * MenuDAO class used to fetch data from data base.
  * @author hexware

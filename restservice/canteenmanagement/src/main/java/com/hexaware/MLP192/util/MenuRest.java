@@ -1,11 +1,11 @@
-package com.hexaware.MLPXX.util;
+package com.hexaware.MLP192.util;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import com.hexaware.MLPXX.model.Menu;
-import com.hexaware.MLPXX.factory.MenuFactory;
+import com.hexaware.MLP192.model.Menu;
+import com.hexaware.MLP192.factory.MenuFactory;
 
 /**
  * This class provides a REST interface for the employee entity.
