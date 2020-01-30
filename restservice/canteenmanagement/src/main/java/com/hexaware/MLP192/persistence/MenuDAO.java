@@ -11,7 +11,7 @@ public interface MenuDAO {
     /**
      * @return the all the Menu record.
      */
-  @SqlQuery("Select * from Menu")
+  @SqlQuery("Select * from MENU")
     @Mapper(MenuMapper.class)
     List<Menu> show();
 }

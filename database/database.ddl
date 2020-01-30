@@ -19,4 +19,4 @@ create table ORDERS(CUS_ID varchar(20),ORD_ID int primary key not null,ORD_DATE 
 create table WALLET(CUS_ID varchar(20),WAL_BAL float,WAL_PAYID varchar(20),WAL_TOTAMT float,WAL_PAYDATE datetime,WAL_PAYTIME datetime,foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
 --create table MENU
 
-create table MENU(MEN_ITEMNAME varchar(20),MEN_ITEMID varchar(20) primary key,MEN_ITEMAMT float,CUS_ID varchar(20),foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
+create table MENU(MEN_ITEMNAME varchar(20),FOOD_ID varchar(20) primary key,MEN_ITEMAMT float,CUS_ID varchar(20),foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
