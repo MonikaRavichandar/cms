@@ -10,7 +10,7 @@ public class Menu {
  * foodId to store foodId.
  */
   private String foodId;
-  private String MENITEMNAME ;
+  private String FOODITEMNAME ;
 
   /**
    * Default Constructor.
@@ -22,9 +22,9 @@ public class Menu {
  * @param argFoodId to initialize food id.
  * used to get details through constructor.
  */
-  public Menu(final String argFoodId,final String argMEN_ITEMNAME) {
+  public Menu(final String argFoodId,final String argFOOD_ITEMNAME) {
     this.foodId = argFoodId;
-    this.MENITEMNAME = argMEN_ITEMNAME;
+    this.FOODITEMNAME = argFOOD_ITEMNAME;
 
   }
   @Override
@@ -36,7 +36,7 @@ public class Menu {
       return false;
     }
     Menu menu = (Menu) obj;
-    if (Objects.equals(foodId, menu.foodId )||Objects.equals(MENITEMNAME, menu.MENITEMNAME ))
+    if (Objects.equals(foodId, menu.foodId )||Objects.equals(FOODITEMNAME, menu.FOODITEMNAME ))
     {
       return true;
     }
@@ -48,7 +48,7 @@ public class Menu {
     return Objects.hash(foodId);
   }
   public final String hashCode() {
-    return Objects.hash(MENITEMNAME);
+    return Objects.hash(FOODITEMNAME);
   }
     /**
      * @return this food ID.
@@ -57,15 +57,15 @@ public class Menu {
     return foodId;
   }
 
-  public final String getMEN_ITEMNAME() {
-      return MENITEMNAME; 
+  public final String getFOOD_ITEMNAME() {
+      return FOODITEMNAME; 
   }
     /**
      * @param argFoodId gets the food id.
      */
-  public final void setFoodId(final String argFoodId,final String argMEN_ITEMNAME) {
+  public final void setFoodId(final String argFoodId,final String argFOOD_ITEMNAME) {
     this.foodId = argFoodId;
-    this.MENITEMNAME = argMEN_ITEMNAME;
+    this.FOODITEMNAME = argFOOD_ITEMNAME;
 
   }
 }

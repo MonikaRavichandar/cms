@@ -7,7 +7,7 @@ use MLP192;
 -- Creating Customer Table
 --create table CUSTOMERS
 
-create table CUSTOMER(CUS_ID varchar(30) primary key not null,CUS_PWD varchar(20),CUS_NAME varchar(30),CUS_PH varchar(20),CUS_ADD varchar(30));
+create table CUSTOMER(CUS_ID varchar(30) primary key not null,CUS_PWD varchar(20),CUS_NAME varchar(30),CUS_DOB date,CUS_PH varchar(20),CUS_ADD varchar(30));
 --create table VENDOR
 
 create table VENDOR(VEN_ID varchar(20) primary key,CUS_ID varchar(20),VEN_NAME varchar(20),VEN_FSTATUS varchar(20),VEN_NO varchar(20) , foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
@@ -19,4 +19,4 @@ create table ORDERS(CUS_ID varchar(20),ORD_ID int primary key not null,ORD_DATE 
 create table WALLET(CUS_ID varchar(20),WAL_BAL float,WAL_PAYID varchar(20),WAL_TOTAMT float,WAL_PAYDATE datetime,WAL_PAYTIME datetime,foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
 --create table MENU
 
-create table MENU(MEN_ITEMNAME varchar(20),FOOD_ID varchar(20) primary key,MEN_ITEMAMT float,CUS_ID varchar(20),foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
+create table MENU(FOOD_ID varchar(20) primary key,FOOD_ITEMNAME varchar(20),FOOD_ITEMAMT float,CUS_ID varchar(20),foreign key(CUS_ID) references CUSTOMER(CUS_ID) on delete cascade);
