@@ -45,11 +45,9 @@ public class Menu {
   @Override
     public final int hashCode()
      {
-    return Objects.hash(foodId);
+    return Objects.hash(foodId,FOODITEMNAME);
   }
-  public final String hashCode() {
-    return Objects.hash(FOODITEMNAME);
-  }
+
     /**
      * @return this food ID.
      */
