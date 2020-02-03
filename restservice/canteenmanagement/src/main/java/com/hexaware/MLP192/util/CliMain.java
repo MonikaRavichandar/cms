@@ -46,9 +46,9 @@ class CliMain {
  */
   private void showFullMenu() {
     Menu[] menu = MenuFactory.showMenu();
-    System.out.println("Menu_Id"+"\t"+"FOOD_NAME");
+    System.out.println("food_Id"+"\t"+"food_ItemName"+"\t"+"food_ItemAmt"+"\t"+"cus_Id");
     for (Menu m : menu) {
-      System.out.println(m.getFoodId()+"\t"+ m.getFOOD_ITEMNAME());
+      System.out.format("%3s %15s %15f %10s\n",m.getfood_Id(),m.getfood_ItemName(),m.getfood_ItemAmt(),m.getcus_Id());
     }
   }
 /**
