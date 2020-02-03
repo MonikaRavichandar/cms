@@ -1,3 +1,4 @@
+
 package com.hexaware.MLP192.model;
 import java.util.Objects;
 
@@ -6,7 +7,6 @@ import java.util.Objects;
  * @author hexware
  */
 public class Menu {
-  private static final String   argfood_Id = null;
   /**
    * foodId,foodItemName,foodItemAmt,cusId.
    */
@@ -21,17 +21,17 @@ public class Menu {
 
   }
 /**
- * @param argfood_Id to initialize food id.
- * @param argfood_ItemName to initialize food name.
- * @param argfood_ItemAmt to initialize food amount.
- * @param argcus_Id to initialize customer Id.
+ * @param argfoodId to initialize food id.
+ * @param argfoodItemName to initialize food name.
+ * @param argfoodItemAmt to initialize food amount.
+ * @param argcusId to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final String argfood_Id , final String argfood_ItemName , final float argfood_ItemAmt , final String argcus_Id){
-    this.foodId = argfood_Id;
-    this.foodItemName = argfood_ItemName;
-    this.foodItemAmt = argfood_ItemAmt;
-    this.cusId = argcus_Id;
+  public Menu(final String argfoodId, final String argfoodItemName, final float argfoodItemAmt, final String argcusId){
+    this.foodId = argfoodId;
+    this.foodItemName = argfoodItemName;
+    this.foodItemAmt = argfoodItemAmt;
+    this.cusId = argcusId;
   }
 
   @Override
@@ -60,18 +60,19 @@ public class Menu {
   /**
    * @return this food ID.
    */
-     public final String getfood_Id() {
+  public final String getfoodId() {
     return foodId;
   }
   /**@return this  */
-  public final String getfood_ItemName() {
+  public final String getfoodItemName() {
     return foodItemName;
   }
-
-  public final float getfood_ItemAmt() {
+  /**@return this */
+  public final float getfoodItemAmt() {
     return foodItemAmt;
   }
-  public final String getcus_Id(){
+  /**@return this */
+  public final String getcusId() {
     return cusId;
   }
 
@@ -79,19 +80,25 @@ public class Menu {
    * @param argFoodId gets the food id.
    */
   public final void setfoodId(final String argFoodId) {
-    this.foodId = argfood_Id;
+    this.foodId = argfoodId;
   }
-
-  public final void setfoodItemName(final String argfood_ItemName) {
-    this.foodItemName = argfood_ItemName;
+  /**
+   * @param argfoodItemName gets the food name.
+   */
+  public final void setfoodItemName(final String argfoodItemName) {
+    this.foodItemName = argfoodItemName;
   }
-
-  public final void setfoodAmt(final float argfood_ItemAmt){
-    this.foodItemAmt = argfood_ItemAmt;
+  /**
+   * @param argfoodItemAmt gets the food amount.
+   */
+  public final void setfoodAmt(final float argfoodItemAmt){
+    this.foodItemAmt = argfoodItemAmt;
   }
-  public final void setcusId (final String argcus_Id)
-  {
-    this.cusId = argcus_Id;
+  /**
+   * @param argcusId gets the customer Id.
+   */
+  public final void setcusId(final String argcusId){
+    this.cusId = argcusId;
 
   }
 

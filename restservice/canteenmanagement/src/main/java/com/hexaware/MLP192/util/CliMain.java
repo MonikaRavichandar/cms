@@ -48,7 +48,7 @@ class CliMain {
     Menu[] menu = MenuFactory.showMenu();
     System.out.println("food_Id" + "\t" + "food_ItemName" + "\t" + "food_ItemAmt" + "\t" + "cus_Id");
     for (Menu m : menu) {
-      System.out.format("%3s %15s %15f %10s\n", m.getfood_Id(), m.getfood_ItemName(), m.getfood_ItemAmt(), m.getcus_Id());
+      System.out.format("%3s %15s %15f %10s\n", m.getfoodId(), m.getfoodItemName(), m.getfoodItemAmt(), m.getcusId());
     }
   }
 /**
