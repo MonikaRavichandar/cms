@@ -1,3 +1,4 @@
+
 package com.hexaware.MLP192.model;
 import java.util.Objects;
 
@@ -6,12 +7,13 @@ import java.util.Objects;
  * @author hexware
  */
 public class Menu {
-/**
- * foodId to store foodId.
- */
+  /**
+   * foodId,foodItemName,foodItemAmt,cusId.
+   */
   private String foodId;
-  private String FOODITEMNAME ;
-
+  private String foodItemName;
+  private Float foodItemAmt;
+  private String cusId;
   /**
    * Default Constructor.
    */
@@ -19,30 +21,38 @@ public class Menu {
 
   }
 /**
- * @param argFoodId to initialize food id.
+ * @param argfoodId to initialize food id.
+ * @param argfoodItemName to initialize food name.
+ * @param argfoodItemAmt to initialize food amount.
+ * @param argcusId to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final String argFoodId,final String argFOOD_ITEMNAME) {
-    this.foodId = argFoodId;
-    this.FOODITEMNAME = argFOOD_ITEMNAME;
-
+  public Menu(final String argfoodId, final String argfoodItemName, final float argfoodItemAmt, final String argcusId){
+    this.foodId = argfoodId;
+    this.foodItemName = argfoodItemName;
+    this.foodItemAmt = argfoodItemAmt;
+    this.cusId = argcusId;
   }
+
   @Override
-    public final boolean equals(final Object obj) {
+  public final boolean equals(final Object obj) {
     if (obj == null) {
       return false;
     }
     if (getClass() != obj.getClass()) {
       return false;
     }
-    Menu menu = (Menu) obj;
-    if (Objects.equals(foodId, menu.foodId )||Objects.equals(FOODITEMNAME, menu.FOODITEMNAME ))
+    final Menu menu = (Menu) obj;
+    if (Objects.equals(foodId, menu.foodId) || Objects.equals(foodItemName, menu.foodItemName)
+        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId, menu.cusId))
     {
       return true;
     }
     return false;
   }
+
   @Override
+<<<<<<< HEAD
     public final int hashCode()
      {
     return Objects.hash(foodId,FOODITEMNAME);
@@ -52,18 +62,56 @@ public class Menu {
      * @return this food ID.
      */
   public final String getFoodId() {
+=======
+
+     public final int hashCode() {
+    return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
+  }
+
+  /**
+   * @return this food ID.
+   */
+  public final String getfoodId() {
+>>>>>>> 9e2154d07c124aab71cbb71470fdcde01d659e84
     return foodId;
   }
-
-  public final String getFOOD_ITEMNAME() {
-      return FOODITEMNAME; 
+  /**@return this  */
+  public final String getfoodItemName() {
+    return foodItemName;
   }
-    /**
-     * @param argFoodId gets the food id.
-     */
-  public final void setFoodId(final String argFoodId,final String argFOOD_ITEMNAME) {
-    this.foodId = argFoodId;
-    this.FOODITEMNAME = argFOOD_ITEMNAME;
+  /**@return this */
+  public final float getfoodItemAmt() {
+    return foodItemAmt;
+  }
+  /**@return this */
+  public final String getcusId() {
+    return cusId;
+  }
+
+  /**
+   * @param argFoodId gets the food id.
+   */
+  public final void setfoodId(final String argFoodId) {
+    this.foodId = argfoodId;
+  }
+  /**
+   * @param argfoodItemName gets the food name.
+   */
+  public final void setfoodItemName(final String argfoodItemName) {
+    this.foodItemName = argfoodItemName;
+  }
+  /**
+   * @param argfoodItemAmt gets the food amount.
+   */
+  public final void setfoodAmt(final float argfoodItemAmt){
+    this.foodItemAmt = argfoodItemAmt;
+  }
+  /**
+   * @param argcusId gets the customer Id.
+   */
+  public final void setcusId(final String argcusId){
+    this.cusId = argcusId;
 
   }
+
 }
