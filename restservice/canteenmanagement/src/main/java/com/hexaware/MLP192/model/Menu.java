@@ -6,12 +6,12 @@ import java.util.Objects;
  * @author hexware
  */
 public class Menu {
-  private static final String argfood_Id = null;
+  private static final String   argfood_Id = null;
   /**
-   * foodId to store foodId.
+   * foodId,foodItemName,foodItemAmt,cusId.
    */
   private String foodId;
-  private String foodItemName ;
+  private String foodItemName;
   private Float foodItemAmt;
   private String cusId;
   /**
@@ -21,15 +21,17 @@ public class Menu {
 
   }
 /**
- * @param argFoodId to initialize food id.
+ * @param argfood_Id to initialize food id.
+ * @param argfood_ItemName to initialize food name.
+ * @param argfood_ItemAmt to initialize food amount.
+ * @param argcus_Id to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final String argfood_Id,final String argfood_ItemName,final Float argfood_ItemAmt,final String argcus_Id) {
+  public Menu(final String argfood_Id , final String argfood_ItemName , final float argfood_ItemAmt , final String argcus_Id){
     this.foodId = argfood_Id;
     this.foodItemName = argfood_ItemName;
     this.foodItemAmt = argfood_ItemAmt;
     this.cusId = argcus_Id;
-
   }
 
   @Override
@@ -40,27 +42,28 @@ public class Menu {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    Menu menu = (Menu) obj;
+    final Menu menu = (Menu) obj;
     if (Objects.equals(foodId, menu.foodId) || Objects.equals(foodItemName, menu.foodItemName)
-        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId,menu.cusId)) {
+        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId, menu.cusId))
+    {
       return true;
     }
     return false;
   }
 
   @Override
-  public final int hashCode() 
-  {
-    return Objects.hash(foodId,foodItemName,foodItemAmt,cusId);
+
+     public final int hashCode() {
+    return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
   }
 
   /**
    * @return this food ID.
    */
-  public final String getfood_Id() {
+     public final String getfood_Id() {
     return foodId;
   }
-
+  /**@return this  */
   public final String getfood_ItemName() {
     return foodItemName;
   }
@@ -83,10 +86,10 @@ public class Menu {
     this.foodItemName = argfood_ItemName;
   }
 
-  public final void setfoodAmt(final float argfood_ItemAmt) {
+  public final void setfoodAmt(final float argfood_ItemAmt){
     this.foodItemAmt = argfood_ItemAmt;
   }
-  public final void setcusId(final String argcus_Id)
+  public final void setcusId (final String argcus_Id)
   {
     this.cusId = argcus_Id;
 
