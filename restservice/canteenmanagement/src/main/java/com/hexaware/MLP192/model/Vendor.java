@@ -28,17 +28,15 @@ public class Vendor {
   }
 
   /**
-   
-  * @param argvenId,argcusId,argenvenName,argvenStatus,argvenNo to initialize venId,cusId,venName,venStatus,venNo.
+  * @param argvenId, @param argcusId, @param argenvenName, @param argvenStatus, @param argvenNo to initialize venId, cusId, venName, venStatus, venNo.
   * used to get details through constructor.
    */
-  public Vendor(final String argVenId, final String argCusId, final String argVenName, final String argVenStatus,final String argVenNo)
-   {
+  public Vendor(final String argVenId, final String argCusId, final String argVenName, final String argVenStatus,final String argVenNo){
     this.venId = argVenId;
     this.cusId = argCusId;
     this.venName = argVenName;
-    this.venStatus= argVenStatus;
-    this.venNo= argVenNo;
+    this.venStatus = argVenStatus;
+    this.venNo = argVenNo;
 
   }
   @Override
