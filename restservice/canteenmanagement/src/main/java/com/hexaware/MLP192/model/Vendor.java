@@ -1,3 +1,4 @@
+
 package com.hexaware.MLP192.model;
 import java.util.Objects;
 
@@ -14,12 +15,10 @@ public class Vendor {
    venNo to store venNo.
  */
   private String venId;
-  private String cusId ;
+  private String cusId;
   private String venName;
   private String venStatus;
   private String venNo;
- 
-
   /**
    * Default Constructor.
    */
@@ -28,17 +27,19 @@ public class Vendor {
   }
 
   /**
-   
-  * @param argvenId,argcusId,argenvenName,argvenStatus,argvenNo to initialize venId,cusId,venName,venStatus,venNo.
+  * @param argVenId to initialize venId.
+  * @param argCusId to initialize cusId.
+  * @param argVenName to initialize venName.
+  * @param argVenStatus to initialize venStatus.
+  * @param argVenNo to initialize venId, cusId, venName, venStatus, venNo.
   * used to get details through constructor.
    */
-  public Vendor(final String argVenId, final String argCusId, final String argVenName, final String argVenStatus,final String argVenNo)
-   {
+  public Vendor(final String argVenId, final String argCusId, final String argVenName, final String argVenStatus, final String argVenNo) {
     this.venId = argVenId;
     this.cusId = argCusId;
     this.venName = argVenName;
-    this.venStatus= argVenStatus;
-    this.venNo= argVenNo;
+    this.venStatus = argVenStatus;
+    this.venNo = argVenNo;
 
   }
   @Override
@@ -50,16 +51,15 @@ public class Vendor {
       return false;
     }
     Vendor vendor = (Vendor) obj;
-    if (Objects.equals(venId, vendor.venId )||Objects.equals(cusId, vendor.cusId )||Objects.equals(venName, vendor.venName)||Objects.equals(venStatus, vendor.venStatus)||Objects.equals(venNo, vendor.venNo ))
-    {
+    if (Objects.equals(venId, vendor.venId) || Objects.equals(cusId, vendor.cusId) || Objects.equals(venName, vendor.venName)
+          || Objects.equals(venStatus, vendor.venStatus) || Objects.equals(venNo, vendor.venNo)) {
       return true;
     }
     return false;
   }
   @Override
-    public final int hashCode()
-     {
-    return Objects.hash(venId,cusId,venName,venStatus,venNo);
+    public final int hashCode() {
+    return Objects.hash(venId, cusId, venName, venStatus, venNo);
   }
 
     /**
@@ -73,7 +73,7 @@ public class Vendor {
      */
 
   public final String getCusId() {
-      return cusId; 
+    return cusId;
   }
    /**
      * @return this VenName.
@@ -85,48 +85,43 @@ public class Vendor {
      * @return this VenStatus.
      */
   public final String getVenStatus() {
-      return venStatus; 
+    return venStatus;
   }
   /**
      * @return this VenNo.
      */
   public final String getVenNo() {
-    return venNo; 
-}
+    return venNo;
+  }
     /**
      * @param argVenId gets the  venId.
      */
-  public final void setVenId(final String argVenId) 
-  {
+  public final void setVenId(final String argVenId) {
     this.venId = argVenId;
   }
   /**
      * @param argCusId gets the  cusId.
      */
-  public final void setCusId(final String argCusId) 
-  {
+  public final void setCusId(final String argCusId) {
     this.cusId = argCusId;
   }
   /**
      * @param argVenName gets the  venName.
      */
-  public final void setVenName(final String argVenName) 
-  {
+  public final void setVenName(final String argVenName) {
     this.venName = argVenName;
   }
   /**
      * @param argVenStatus gets the  venStatus.
      */
-  public final void setVenStatus(final String argVenStatus) 
-  {
-    this.venStatus= argVenStatus;
+  public final void setVenStatus(final String argVenStatus) {
+    this.venStatus = argVenStatus;
   }
   /**
      * @param argVenNo gets the  venNo.
      */
-  public final void setVenNo(final String argVenNo) 
-  {
-    this.venNo= argVenNo;
+  public final void setVenNo(final String argVenNo) {
+    this.venNo = argVenNo;
   }
 }
- 
+

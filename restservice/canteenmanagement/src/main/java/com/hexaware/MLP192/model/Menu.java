@@ -27,7 +27,7 @@ public class Menu {
  * @param argcusId to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final String argfoodId, final String argfoodItemName, final float argfoodItemAmt, final String argcusId){
+  public Menu(final String argfoodId, final String argfoodItemName, final float argfoodItemAmt, final String argcusId) {
     this.foodId = argfoodId;
     this.foodItemName = argfoodItemName;
     this.foodItemAmt = argfoodItemAmt;
@@ -44,35 +44,21 @@ public class Menu {
     }
     final Menu menu = (Menu) obj;
     if (Objects.equals(foodId, menu.foodId) || Objects.equals(foodItemName, menu.foodItemName)
-        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId, menu.cusId))
-    {
+        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId, menu.cusId)) {
       return true;
     }
     return false;
   }
 
   @Override
-<<<<<<< HEAD
-    public final int hashCode()
-     {
-    return Objects.hash(foodId,FOODITEMNAME);
+    public final int hashCode() {
+    return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
   }
 
     /**
      * @return this food ID.
      */
   public final String getFoodId() {
-=======
-
-     public final int hashCode() {
-    return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
-  }
-
-  /**
-   * @return this food ID.
-   */
-  public final String getfoodId() {
->>>>>>> 9e2154d07c124aab71cbb71470fdcde01d659e84
     return foodId;
   }
   /**@return this  */
@@ -89,9 +75,9 @@ public class Menu {
   }
 
   /**
-   * @param argFoodId gets the food id.
+   * @param argfoodId gets the food id.
    */
-  public final void setfoodId(final String argFoodId) {
+  public final void setfoodId(final String argfoodId) {
     this.foodId = argfoodId;
   }
   /**
@@ -103,13 +89,13 @@ public class Menu {
   /**
    * @param argfoodItemAmt gets the food amount.
    */
-  public final void setfoodAmt(final float argfoodItemAmt){
+  public final void setfoodAmt(final float argfoodItemAmt) {
     this.foodItemAmt = argfoodItemAmt;
   }
   /**
    * @param argcusId gets the customer Id.
    */
-  public final void setcusId(final String argcusId){
+  public final void setcusId(final String argcusId) {
     this.cusId = argcusId;
 
   }
