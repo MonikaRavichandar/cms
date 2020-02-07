@@ -3,6 +3,6 @@ use MLP192;
 
 
 
-insert into CUSTOMER values('C101','Sijh','magudee','1996-05-22','896857868','chennai-80'),('C102','Dfhg','arun','1990-07-10','794896048','Chennai-73');
-insert into MENU values('M101','dosa',40.00,'C101'),('M102','idly',20.00,'C102'),('M103','biriyani',120.00,'C101'),('M104','chapathi',40.00,'C102');
-insert into VENDOR values('V101','C101','raja','available','894329049'),('V102','C102','bala','not available','783495939');
+insert into CUSTOMER values(100,'Dfhg','arun','1990-07-10','794896048','arun@gmail.com',1000.0);
+insert into MENU values(101,'dosa',40.00,100),(102,'idly',20.00,100),(103,'biriyani',120.00,100),(104,'chapathi',40.00,100);
+insert into VENDOR values(101,100,'raja','available','894329049',1000.0),(100,100,'bala','not available','783495939',1500.0);

@@ -8,8 +8,8 @@ import com.hexaware.MLP192.model.Vendor;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import org.skife.jdbi.v2.StatementContext;
 /**
- * VendorMapper class used to fetch Vendor data from database.
- * @monika-hexware
+ * VendorMapper class used to fetch vendor data from database.
+ * @author hexware
  */
 public class VendorMapper implements ResultSetMapper<Vendor> {
     /**
@@ -23,7 +23,7 @@ public class VendorMapper implements ResultSetMapper<Vendor> {
       /**
        * @return Vendor
        */
-    return new Vendor(rs.getString("VEN_ID"), rs.getString("CUS_ID"), rs.getString("VEN_NAME"),
-     rs.getString("VEN_FSTATUS"), rs.getString("VEN_NO"));
+    return new Vendor(rs.getInt("VEN_ID"), rs.getInt("CUS_ID"), rs.getString("VEN_NAME"),
+    rs.getString("VEN_PWD"), rs.getString("VEN_FSTATUS"), rs.getString("VEN_NO"), rs.getFloat("VEN_WALLET"));
   }
 }
