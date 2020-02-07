@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Vendor class used to display vendor information.
- * @author monika-hexware
+ * @author monikaR-hexware
  */
 public class Vendor {
 /**
@@ -13,12 +13,15 @@ public class Vendor {
    venName to store venName.
    venStatus to store venStatus.
    venNo to store venNo.
+   venWallet to store venWall.
  */
-  private String venId;
-  private String cusId;
+  private int venId;
+  private int cusId;
   private String venName;
   private String venStatus;
   private String venNo;
+  private float venWallet;
+  private String venPwd;
   /**
    * Default Constructor.
    */
@@ -31,15 +34,20 @@ public class Vendor {
   * @param argCusId to initialize cusId.
   * @param argVenName to initialize venName.
   * @param argVenStatus to initialize venStatus.
-  * @param argVenNo to initialize venId, cusId, venName, venStatus, venNo.
+  * @param argVenNo to initialize venNo.
+  *@param argVenWallet to initialize venWallet.
+  *@param argVenPwd to initialize venWallet.
   * used to get details through constructor.
    */
-  public Vendor(final String argVenId, final String argCusId, final String argVenName, final String argVenStatus, final String argVenNo) {
+  public Vendor(final int  argVenId, final int argCusId, final String argVenName,
+       final String argVenPwd, final String argVenStatus, final String argVenNo, final float argVenWallet) {
     this.venId = argVenId;
     this.cusId = argCusId;
     this.venName = argVenName;
     this.venStatus = argVenStatus;
     this.venNo = argVenNo;
+    this.venWallet = argVenWallet;
+    this.venPwd = argVenPwd;
 
   }
   @Override
@@ -52,28 +60,36 @@ public class Vendor {
     }
     Vendor vendor = (Vendor) obj;
     if (Objects.equals(venId, vendor.venId) || Objects.equals(cusId, vendor.cusId) || Objects.equals(venName, vendor.venName)
-          || Objects.equals(venStatus, vendor.venStatus) || Objects.equals(venNo, vendor.venNo)) {
+          || Objects.equals(venStatus, vendor.venStatus) || Objects.equals(venNo, vendor.venNo)
+          || Objects.equals(venWallet, vendor.venWallet) || Objects.equals(venPwd, vendor.venPwd)) {
       return true;
     }
     return false;
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(venId, cusId, venName, venStatus, venNo);
+    return Objects.hash(venId, cusId, venName, venStatus, venNo, venWallet, venPwd);
   }
 
     /**
      * @return this venID.
      */
-  public final String getVenId() {
+  public final int getVenId() {
     return venId;
   }
    /**
      * @return this cusID.
      */
 
-  public final String getCusId() {
+  public final int getCusId() {
     return cusId;
+  }
+  /**
+     * @return this cusID.
+     */
+
+  public final String getVenPwd() {
+    return venPwd;
   }
    /**
      * @return this VenName.
@@ -93,16 +109,22 @@ public class Vendor {
   public final String getVenNo() {
     return venNo;
   }
+  /**
+     * @return this VenWallet.
+     */
+  public final float getVenWallet() {
+    return venWallet;
+  }
     /**
      * @param argVenId gets the  venId.
      */
-  public final void setVenId(final String argVenId) {
+  public final void setVenId(final int argVenId) {
     this.venId = argVenId;
   }
   /**
      * @param argCusId gets the  cusId.
      */
-  public final void setCusId(final String argCusId) {
+  public final void setCusId(final int argCusId) {
     this.cusId = argCusId;
   }
   /**
@@ -117,11 +139,24 @@ public class Vendor {
   public final void setVenStatus(final String argVenStatus) {
     this.venStatus = argVenStatus;
   }
-  /**
-     * @param argVenNo gets the  venNo.
+   /**
+     * @param argVenNo gets the  cusId.
      */
   public final void setVenNo(final String argVenNo) {
     this.venNo = argVenNo;
   }
-}
+    /**
+     * @param argVenWallet gets the  cusId.
+     */
+  public final void  setVenWallet(final float argVenWallet) {
+    this.venWallet = argVenWallet;
+  }
+  /**
+     * @param argVenPwd gets the  cusId.
+     */
+  public final void  setVenPwd(final String argVenPwd) {
+    this.venPwd = argVenPwd;
+  }
 
+
+}

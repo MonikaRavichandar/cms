@@ -32,4 +32,43 @@ public class MenuFactory {
     List<Menu> menu = dao().show();
     return menu.toArray(new Menu[menu.size()]);
   }
+/**
+   * Call the data base connection.
+   * @param foodItemName insert foodItemName.
+   * @param foodId insert
+   * @return the array of Menu object.
+   */
+  public static int addMenu(final int foodId, final String foodItemName) {
+    int i = dao().addingMenu(foodId, foodItemName);
+    return i;
+  }
+   /**
+   * Call the data base connection.
+   * @param foodItemName to delete Menu name.
+   * @return the array of Menu object.
+   */
+  public static int deleteMenu(final String foodItemName) {
+    int j = dao().deletingMenu(foodItemName);
+    return j;
+  }
+   /**
+   * Call the data base connection.
+   * @param foodItemAmt to update Menu status.
+   * @param foodId to update Menu status.
+   * @return the array of Menu object.
+   */
+  public static int updateMenu(final int  foodId, final float foodItemAmt) {
+    int k = dao().updatingMenu(foodId, foodItemAmt);
+    return k;
+  }
+   /**
+   * Call the data base connection.
+   * @param foodId to delete Menu name.
+   * @return the array of Menu object.
+   */
+  public static Menu showCost(final int foodId) {
+    Menu m = dao().showfoodCost(foodId);
+    return m;
+
+  }
 }

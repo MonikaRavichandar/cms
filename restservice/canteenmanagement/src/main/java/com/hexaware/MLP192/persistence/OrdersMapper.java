@@ -1,11 +1,9 @@
-package com.hexaware.MLP192.persistence;
 
+package com.hexaware.MLP192.persistence;
+import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.hexaware.MLP192.model.Orders;
-
-import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import org.skife.jdbi.v2.StatementContext;
 /**
  * OrdersMapper class used to fetch menu data from database.
@@ -23,7 +21,9 @@ public class OrdersMapper implements ResultSetMapper<Orders> {
       /**
        * @return Orders
        */
-    return new Orders(rs.getString("CUS_ID "), rs.getString("ORD_ID"), rs.getDate("ORD_DATE"),
-        rs.getString("ORD_ITEMSEL"));
+    return new Orders(rs.getInt("CUS_ID"), rs.getInt("ORD_ID"), rs.getDate("ORD_DATE"),
+        rs.getString("ORD_ITEMSEL"), rs.getInt("ORD_QTY"), rs.getString("ORD_STATUS"));
   }
 }
+
+

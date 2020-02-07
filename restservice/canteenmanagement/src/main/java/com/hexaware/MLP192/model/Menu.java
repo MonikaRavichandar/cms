@@ -10,10 +10,10 @@ public class Menu {
   /**
    * foodId,foodItemName,foodItemAmt,cusId.
    */
-  private String foodId;
+  private int foodId;
   private String foodItemName;
   private Float foodItemAmt;
-  private String cusId;
+  private int cusId;
   /**
    * Default Constructor.
    */
@@ -27,7 +27,7 @@ public class Menu {
  * @param argcusId to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final String argfoodId, final String argfoodItemName, final float argfoodItemAmt, final String argcusId) {
+  public Menu(final int argfoodId, final String argfoodItemName, final float argfoodItemAmt, final int argcusId) {
     this.foodId = argfoodId;
     this.foodItemName = argfoodItemName;
     this.foodItemAmt = argfoodItemAmt;
@@ -51,33 +51,38 @@ public class Menu {
   }
 
   @Override
-    public final int hashCode() {
+
+     public final int hashCode() {
     return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
   }
-
-    /**
-     * @return this food ID.
-     */
-  public final String getFoodId() {
+/**
+* @return this food Id.
+*/
+  public final int getfoodId() {
     return foodId;
   }
-  /**@return this  */
+  /**
+* @return this food Item name.
+*/
   public final String getfoodItemName() {
     return foodItemName;
   }
-  /**@return this */
-  public final float getfoodItemAmt() {
+/**
+* @return this food amrt.
+*/
+  public final Float getfoodItemAmt() {
     return foodItemAmt;
   }
-  /**@return this */
-  public final String getcusId() {
+/**
+* @return this cus Id.
+*/
+  public final int getcusId() {
     return cusId;
   }
-
   /**
    * @param argfoodId gets the food id.
    */
-  public final void setfoodId(final String argfoodId) {
+  public final void setfoodId(final int argfoodId) {
     this.foodId = argfoodId;
   }
   /**
@@ -95,9 +100,8 @@ public class Menu {
   /**
    * @param argcusId gets the customer Id.
    */
-  public final void setcusId(final String argcusId) {
+  public final void setcusId(final int argcusId) {
     this.cusId = argcusId;
 
   }
-
 }

@@ -25,8 +25,8 @@ public class WalletMapper implements ResultSetMapper<Wallet> {
       /**
       *@return Wallet
       */
-    return new Wallet(rs.getString("cusId"), rs.getFloat("walBal"), rs.getString("walPayid"),
-      rs.getDate("walPaytime"), rs.getDate("walPaydate"), rs.getFloat("walTotamt"));
+    return new Wallet(rs.getInt("CUS_ID"), rs.getFloat("WAL_BAL"), rs.getString("WAL_PAYID"),
+      rs.getDate("WAL_PAYTIME"), rs.getDate("WAL_PAYDATE"), rs.getFloat("WAL_TOTAMT"));
   }
 }
 

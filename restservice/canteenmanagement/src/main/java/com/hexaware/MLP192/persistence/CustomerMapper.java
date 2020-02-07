@@ -22,7 +22,7 @@ public class CustomerMapper implements ResultSetMapper<Customer> {
       /**
        * @return Customer
        */
-    return new Customer(rs.getString("CusId"), rs.getString("CusPwd"), rs.getString("CusName"),
-     rs.getDate("CusDob"), rs.getString("CusPh"), rs.getString("CusAdd"));
+    return new Customer(rs.getInt("CUS_ID"), rs.getString("CUS_PWD"), rs.getString("CUS_NAME"),
+    rs.getDate("CUS_DOB"), rs.getString("CUS_PH"), rs.getString("CUS_MAILADD"), rs.getFloat("CUS_WALLET"));
   }
 }

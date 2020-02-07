@@ -16,7 +16,7 @@ public class Wallet {
  * walPaydate to store payment date.
  */
 
-  private String cusId;
+  private int cusId;
   private float walBal;
   private String walPayid;
   private float walTotamt;
@@ -36,7 +36,7 @@ public class Wallet {
    * @param argwalPaydate   to initialize wallet paydate
    * @param argwalTotamt    to intialize wallet totamt
    */
-  public Wallet(final String argcusId, final float argwalBal, final String argwalPayid, final Date argwalPaytime,
+  public Wallet(final int argcusId, final float argwalBal, final String argwalPayid, final Date argwalPaytime,
       final Date argwalPaydate, final float argwalTotamt) {
     this.cusId = argcusId;
     this.walBal = argwalBal;
@@ -71,7 +71,7 @@ public class Wallet {
   /**
      * @return this cusId.
      */
-  public final String getcusId() {
+  public final int getcusId() {
     return cusId;
   }
   /**
@@ -89,7 +89,7 @@ public class Wallet {
   /**
      * @return this walTotamt.
      */
-  public final float walTotamt() {
+  public final float getwalTotamt() {
     return walTotamt;
   }
   /**
@@ -107,7 +107,7 @@ public class Wallet {
     /**
      * @param argcusId gets the cus id.
      */
-  public final void setcusId(final String argcusId) {
+  public final void setcusId(final int argcusId) {
     this.cusId = argcusId;
   }
   /**

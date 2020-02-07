@@ -12,36 +12,33 @@ public class Customer {
     /**
      * cusId to store customerId.
      */
-  private String cusId;
+  private int cusId;
   private String cusPwd;
   private String cusName;
   private Date cusDob;
   private String cusPh;
-  private String cusAdd;
+  private String cusMailAdd;
+  private float cusWallet;
 
-  /**
-   * Default Constructor.
-   */
-  public Customer() {
-
-  }
 /**
  * @param argCusId to initialize customer Id.
  * @param argCusPwd to initialize customer password.
  * @param  argCusName to initialize customer id.
  * @param argCusDob to initialize customer dateof birth.
  * @param argCusPh to initialize customer phone.
- * @param argCusAdd to initialize customer address.
+ * @param argCusMailAdd to initialize customer mailaddress.
+ * @param argCusWallet to initialize customer wallet.
  * used to get details through constructor.
  */
-  public Customer(final String argCusId, final String argCusPwd, final String argCusName,
-      final Date argCusDob, final String argCusPh, final String argCusAdd) {
+  public Customer(final int argCusId, final String argCusPwd, final String argCusName, final Date argCusDob,
+      final String argCusPh, final String argCusMailAdd,  final float argCusWallet) {
     this.cusId = argCusId;
     this.cusPwd = argCusPwd;
     this.cusName = argCusName;
     this.cusDob = argCusDob;
     this.cusPh = argCusPh;
-    this.cusAdd = argCusAdd;
+    this.cusMailAdd = argCusMailAdd;
+    this.cusWallet = argCusWallet;
   }
   @Override
     public final boolean equals(final Object obj) {
@@ -57,89 +54,101 @@ public class Customer {
          || Objects.equals(cusName, cus.cusName)
          || Objects.equals(cusDob, cus.cusDob)
          || Objects.equals(cusPh, cus.cusPh)
-         || Objects.equals(cusAdd, cus.cusAdd)) {
+         || Objects.equals(cusMailAdd, cus.cusMailAdd)
+        || Objects.equals(cusWallet, cus.cusWallet)) {
       return true;
     }
     return false;
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(cusId, cusPwd, cusName, cusDob, cusPh, cusAdd);
+    return Objects.hash(cusId, cusPwd, cusName, cusDob, cusPh, cusMailAdd, cusWallet);
   }
     /**
      * @return this customer ID.
      */
-  public final String getcusId() {
+  public final int getcusId() {
     return cusId;
   }
-  /**
+    /**
      * @return this customer ID.
      */
 
   public final String getcusPwd() {
     return cusPwd;
   }
-  /**
+    /**
      * @return this customer ID.
      */
   public final String getcusName() {
     return cusName;
   }
-  /**
+    /**
      * @return this customer ID.
      */
   public final Date getcusDob() {
     return cusDob;
   }
-  /**
-     * @return this customer Dob.
+    /**
+     * @return this customer ph.
      */
   public final String getcusPh() {
     return cusPh;
   } /**
-     * @return this customer PH.
+     * @return this customer address.
      */
-  public final String getcusAdd() {
-    return cusAdd;
+  public final String getcusMailAdd() {
+    return cusMailAdd;
   }
-  /**
+     /**
+     * @return this customer wallet.
+     */
+  public final float getcusWallet() {
+    return cusWallet;
+  }
+    /**
      * @return this customer Add.
      */
     /**
      * @param argCusId gets the customer Id.
      */
-  public final void setcusId(final String argCusId) {
+  public final void setcusId(final int argCusId) {
     this.cusId = argCusId;
   }
-  /**
+    /**
      * @param argCusPwd gets the customer Id.
      */
   public final void setcusPwd(final String argCusPwd) {
     this.cusPwd = argCusPwd;
   }
-  /**
+    /**
      * @param argCusName gets the customer Name.
      */
   public final void setcusName(final String argCusName) {
     this.cusName = argCusName;
   }
-  /**
+    /**
      * @param argCusDob gets the customer Dob.
      */
-  public final void setcusDob(final String argCusDob) {
-    this.cusName = argCusDob;
+  public final void setcusDob(final Date argCusDob) {
+    this.cusDob = argCusDob;
   }
-  /**
+    /**
      * @param argCusPh gets the customer Ph.
      */
   public final void setcusPh(final String argCusPh) {
     this.cusPh = argCusPh;
   }
-  /**
-     * @param argCusAdd gets the customer Add.
+    /**
+     * @param argCusMailAdd gets the customer Add.
      */
-  public final void setcusAdd(final String argCusAdd) {
-    this.cusAdd = argCusAdd;
+  public final void setcusAdd(final String argCusMailAdd) {
+    this.cusMailAdd = argCusMailAdd;
   }
-
+    /**
+     * @param argCusWallet gets the customer wallet.
+     */
+  public final void setcusWall(final float argCusWallet) {
+    this.cusWallet = argCusWallet;
+  }
 }
