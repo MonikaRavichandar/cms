@@ -14,6 +14,7 @@ public class Orders {
   private String ordItemSel;
   private int ordQty;
   private String ordStatus;
+  private float ordCost;
 /**
  *@param argCusId to initialize customer id.
  *@param argOrdId to initialize order id
@@ -21,17 +22,19 @@ public class Orders {
  *@param argOrdItemSel to initialize order item sel
  *@param argOrdQty to initialize order quantity
  *@param argOrdStatus to initialize order quantity
+ *@param argOrdCost to initialize order cost
 
  * used to get details through constructor.
  */
   public Orders(final int argCusId, final int argOrdId, final java.util.Date argOrdDate,
-      final String argOrdItemSel, final int argOrdQty, final String argOrdStatus) {
+      final String argOrdItemSel, final int argOrdQty, final String argOrdStatus, final float argOrdCost) {
     this.cusId = argCusId;
     this.ordId = argOrdId;
     this.ordDate = argOrdDate;
     this.ordItemSel = argOrdItemSel;
     this.ordQty = argOrdQty;
     this.ordStatus = argOrdStatus;
+    this.ordCost = argOrdCost;
   }
   @Override
 public final boolean equals(final Object obj) {
@@ -45,14 +48,15 @@ public final boolean equals(final Object obj) {
     if (java.util.Objects.equals(cusId, orders.cusId) || java.util.Objects.equals(ordId, orders.ordId)
          || java.util.Objects.equals(ordDate, orders.ordDate)
          || java.util.Objects.equals(ordItemSel, orders.ordItemSel)
-         ||  java.util.Objects.equals(ordQty, orders.ordQty) || java.util.Objects.equals(ordStatus, orders.ordStatus)) {
+         ||  java.util.Objects.equals(ordQty, orders.ordQty)
+         || java.util.Objects.equals(ordStatus, orders.ordStatus) || java.util.Objects.equals(ordCost, orders.ordCost)) {
       return true;
     }
     return false;
   }
   @Override
 public final int hashCode() {
-    return java.util.Objects.hash(cusId, ordId, ordDate, ordItemSel, ordQty, ordStatus);
+    return java.util.Objects.hash(cusId, ordId, ordDate, ordItemSel, ordQty, ordStatus, ordCost);
   }
 
 /**
@@ -95,6 +99,12 @@ public final int hashCode() {
   public final int  getordQty() {
     return ordQty;
   }
+   /**
+ * @return this ordItemSel.
+ */
+  public final float getordCost() {
+    return ordCost;
+  }
 /**
      * @param argCusId gets the customer id.
      */
@@ -132,6 +142,12 @@ public final int hashCode() {
      */
   public final void setOrdStatus(final String argOrdStatus) {
     this.ordStatus = argOrdStatus;
+  }
+   /**
+     * @param argOrdCost gets the order Item Sel.
+     */
+  public final void setOrdCost(final float argOrdCost) {
+    this.ordCost = argOrdCost;
   }
 }
 

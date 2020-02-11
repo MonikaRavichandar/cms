@@ -2,6 +2,8 @@ package com.hexaware.MLP192.model;
 
 import com.hexaware.MLP192.persistence.MenuDAO;
 import com.hexaware.MLP192.factory.MenuFactory;
+import com.hexaware.MLP192.model.Menu;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -38,14 +40,13 @@ public class MenuTest {
     Menu m101 = new Menu(101);
     assertNotEquals(m100, null);
     assertNotEquals(m101, null);
-    assertEquals(m100.getFoodId(),
-        new Menu(100).getFoodId());
-    m101.setFoodId(100);
+    assertEquals(m100.getfoodId(), new Menu(100).getfoodId());
+    m101.setfoodId(100);
     assertNotEquals(m101, new Menu(101));
-    assertEquals(m100.hashCode(),
-        new Menu(100).hashCode());
+    assertEquals(m100.hashCode(), new Menu(100).hashCode());
     assertEquals(m100, new Menu(100));
   }
+
   /**
    * tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
@@ -54,7 +55,8 @@ public class MenuTest {
   public final void testListAllEmpty(@Mocked final MenuDAO dao) {
     new Expectations() {
       {
-        dao.show(); result = new ArrayList<Menu>();
+        dao.show();
+        result = new ArrayList<Menu>();
       }
     };
     new MockUp<MenuFactory>() {
@@ -66,8 +68,10 @@ public class MenuTest {
     Menu[] me = MenuFactory.showMenu();
     assertEquals(0, me.length);
   }
+
   /**
    * Tests that a list with some employees is handled correctly.
+   *
    * @param dao mocking the dao class
    */
   @Test
@@ -79,7 +83,8 @@ public class MenuTest {
       {
         mn.add(m100);
         mn.add(m101);
-        dao.show(); result = mn;
+        dao.show();
+        result = mn;
       }
     };
     new MockUp<MenuFactory>() {
@@ -90,9 +95,7 @@ public class MenuTest {
     };
     Menu[] mn1 = MenuFactory.showMenu();
     assertEquals(2, mn1.length);
-    assertEquals(new Menu(100).getFoodId(),
-        mn1[0].getFoodId());
-    assertEquals(new Menu(101).getFoodId(),
-        mn1[1].getFoodId());
+    assertEquals(new Menu(100).getfoodId(), mn1[0].getfoodId());
+    assertEquals(new Menu(101).getfoodId(), mn1[1].getfoodId());
   }
 }

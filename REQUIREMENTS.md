@@ -42,7 +42,7 @@ The skeletal application contains a simple screen with list of food items (Menu)
       2. Enter the quantity of the food item selected, order date should be generated automatically.
       3. Order should be placed on adequate Wallet balance.  
       4. Order history will display the list of orders placed by customer.
-      5. Food Vendor can view the orders and accept/cancel with proper comments. 
+      5. Food Vendor can view the orders and accept/cancel with proper comments.
   * Functionality available via
      * Cli
      * Curl

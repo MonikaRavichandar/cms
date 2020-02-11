@@ -57,12 +57,12 @@ int updatingCustomer(@Bind("cusPh") String cusPh, @Bind("cusId") int cusId);
   @Mapper(CustomerMapper.class)
     Customer loginingCustomer(@Bind("cusName") String cusName, @Bind("cusPwd") String cusPwd);
     /**
-*@param cusName customer id
+*@param cusId customer id
 * @return login.
 */
-  @SqlQuery("Select * from CUSTOMER where CUS_NAME = :cusName")
+  @SqlQuery("Select * from CUSTOMER where CUS_ID = :cusId")
   @Mapper(CustomerMapper.class)
-    Customer showCusWalBal(@Bind("cusName") String cusName);
+    Customer showCusWalBal(@Bind("cusId") int cusId);
     /**
 * @param cusWallet customer wallet
 * @param cusId customer id
@@ -70,4 +70,11 @@ int updatingCustomer(@Bind("cusPh") String cusPh, @Bind("cusId") int cusId);
 */
   @SqlUpdate("Update Customer SET CUS_WALLET = :cusWallet where CUS_ID = :cusId")
   int updatingCustomerWal(@Bind("cusId") int cusId, @Bind("cusWallet") float cusWallet);
+  /**
+   * @param cusId  to get Customer Customer Id.
+   * @param updateWallet to update Customer Wallet Balance.
+   * @return the all the Customer record.
+   */
+  @SqlUpdate("Update Customer Set CUST_WALLET = :updateWallet Where CUS_ID =:cusId")
+  int updateCustWalletBalance(@Bind("cusId") int cusId, @Bind("updateWallet") float updateWallet);
 }

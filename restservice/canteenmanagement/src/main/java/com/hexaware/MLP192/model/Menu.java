@@ -16,8 +16,9 @@ public class Menu {
   private int cusId;
   /**
    * Default Constructor.
+   * @param i for integer
    */
-  public Menu() {
+  public Menu(final int i) {
 
   }
 /**
@@ -33,7 +34,11 @@ public class Menu {
     this.foodItemAmt = argfoodItemAmt;
     this.cusId = argcusId;
   }
-
+/**
+ * @par to initialize food id.
+ */
+  public Menu() {
+  }
   @Override
   public final boolean equals(final Object obj) {
     if (obj == null) {

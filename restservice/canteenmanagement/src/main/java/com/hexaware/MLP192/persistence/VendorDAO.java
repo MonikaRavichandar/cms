@@ -17,12 +17,6 @@ public interface VendorDAO {
   @SqlQuery("Select * from VENDOR")
     @Mapper(VendorMapper.class)
     List<Vendor> showVend();
-    /**
-     * @return the all the Vendor record.
-     * @param venName insert VENName.
-     */
-  @SqlUpdate("Insert into VENDOR(VEN_NAME) values (:venName)")
-  int addingVendor(@Bind("venName")String venName);
   /**
    * @param venName delete VENNAME.
    * @return the all the Vendor record.
@@ -53,4 +47,19 @@ public interface VendorDAO {
   @SqlQuery("Select * from VENDOR where VEN_NAME = :venName and VEN_PWD = :venPwd")
 @Mapper(VendorMapper.class)
 Vendor loginingVendor(@Bind("venName") String venName, @Bind("venPwd") String venPwd);
+/**
+* @param venWallet customer wallet
+* @param venId vendor id
+*@return the all the Customer record.
+*/
+  @SqlUpdate("Update VENDOR SET VEN_WALLET = :venWallet where VEN_ID = :venId")
+int updatingVendorWal(@Bind("venId") int venId, @Bind("venWallet") float venWallet);
+  /**
+*@param venName customer id
+* @return login.
+*/
+  @SqlQuery("Select * from VENDOR where VEN_NAME = :venName")
+@Mapper(VendorMapper.class)
+Vendor showvenWalBal(@Bind("venName") String venName);
+
 }

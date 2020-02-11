@@ -69,6 +69,14 @@ public class MenuFactory {
   public static Menu showCost(final int foodId) {
     Menu m = dao().showfoodCost(foodId);
     return m;
-
+  }
+     /**
+   * Call the data base connection.
+   * @param foodId to delete Menu name.
+   * @return the array of Menu object.
+   */
+  public static Menu showFoodName(final int foodId) {
+    Menu m = dao().showfName(foodId);
+    return m;
   }
 }

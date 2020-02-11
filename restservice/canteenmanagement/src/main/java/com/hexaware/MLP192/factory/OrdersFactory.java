@@ -37,21 +37,29 @@ public class OrdersFactory {
     return orders.toArray(new Orders[orders.size()]);
   }
   /**
-   *@param ordDate mkk
-   * @param ordItemSel gg
+   *
+   * @param cusId customer id
+   * @param ordItemSel items selected
    * @param ordQty order quantity
-   * @return NN
+   * @param ordDate order Date
+   * @param ordStatus order status
+   * @param ordCost order cost
+   * @return int
    */
-  public static int insertingORDERS(final String ordDate, final String ordItemSel, final int ordQty) {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    Date od = null;
+  public static int insertingorders(final int cusId, final String ordItemSel, final String ordDate,
+       final int ordQty, final String ordStatus, final float ordCost) {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+    Date od = setDate(new Date());
     try {
       od = sdf.parse(ordDate);
     } catch (ParseException e) {
       System.out.println("Enter valid Date");
     }
-    int i = dao().insertORDERS(od, ordItemSel, ordQty);
+    int i = dao().insertorders(cusId, ordItemSel, ordQty, od, ordStatus, ordCost);
     return i;
+  }
+  private static Date setDate(final Date ordDate) {
+    return ordDate;
   }
      /**
    *
@@ -71,5 +79,32 @@ public class OrdersFactory {
   public static int deletingORDERS(final int ordId) {
     int k = dao().deleteORDERS(ordId);
     return k;
+  }
+   /**
+   * @param ordStatus ordStatus
+   * @param cusId id
+   * @return the array of customer object.
+   */
+  public static int updateOrdStatus(final int cusId, final String ordStatus) {
+    int order = dao().updateOrStatus(cusId, ordStatus);
+    return order;
+  }
+   /**
+   * Call the data base connection.
+   * @param ordId for order id.
+   * @return Orders
+   */
+  public static Orders validateOrder(final int ordId) {
+    Orders v = dao().validateOrders(ordId);
+    return v;
+  }
+   /**
+   * Call the data base connection.
+   * @param ordId for order id.
+   * @return Orders
+   */
+  public static Orders getOrderDetails(final int ordId) {
+    Orders od = dao().getOrderDetails(ordId);
+    return od;
   }
 }

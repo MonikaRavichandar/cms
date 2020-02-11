@@ -44,4 +44,11 @@ public interface MenuDAO {
   @SqlQuery("select * from MENU where FOOD_ID = :foodId")
   @Mapper(MenuMapper.class)
   Menu showfoodCost(@Bind("foodId") int foodId);
+  /**
+   * @param  foodId update foodItemName.
+   *  @return the all the Vendor record.
+   */
+  @SqlQuery("select * from MENU where FOOD_ID = :foodId")
+  @Mapper(MenuMapper.class)
+  Menu showfName(@Bind("foodId") int foodId);
 }

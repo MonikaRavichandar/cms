@@ -88,7 +88,7 @@ public class CustomerFactory {
   * @param name id
   * @return  customer  bal.
   */
-  public static Customer showCusWalletBalance(final String name) {
+  public static Customer showCusWalletBalance(final int name) {
     Customer customer = dao().showCusWalBal(name);
     return customer;
   }

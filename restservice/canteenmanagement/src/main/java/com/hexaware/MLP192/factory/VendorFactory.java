@@ -32,15 +32,6 @@ public class VendorFactory {
     List<Vendor> vendor = dao().showVend();
     return vendor.toArray(new Vendor[vendor.size()]);
   }
-  /**
-   * Call the data base connection.
-   * @param venName insert VENNAME.
-   * @return the array of Vendor object.
-   */
-  public static int addVendor(final String venName) {
-    int i = dao().addingVendor(venName);
-    return i;
-  }
    /**
    * Call the data base connection.
    * @param venName to delete vendor name.
@@ -80,6 +71,23 @@ public class VendorFactory {
    */
   public static Vendor loginVendor(final String venName, final String venPwd) {
     Vendor vendor = dao().loginingVendor(venName, venPwd);
+    return vendor;
+  }
+  /**
+   * @param venWallet wallet
+   * @param venId id
+   * @return the array of customer object.
+   */
+  public static int  updateVendorWalBal(final int venId, final float venWallet) {
+    int vendor = dao().updatingVendorWal(venId, venWallet);
+    return vendor;
+  }
+   /**
+  * @param name id
+  * @return  customer  bal.
+  */
+  public static Vendor showVenWalletBalance(final String name) {
+    Vendor vendor = dao().showvenWalBal(name);
     return vendor;
   }
 

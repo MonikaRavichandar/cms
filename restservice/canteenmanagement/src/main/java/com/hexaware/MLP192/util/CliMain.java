@@ -1,5 +1,5 @@
 package com.hexaware.MLP192.util;
-
+import java.util.Date;
 import java.util.Scanner;
 import com.hexaware.MLP192.factory.CustomerFactory;
 import com.hexaware.MLP192.factory.MenuFactory;
@@ -64,38 +64,13 @@ class CliMain {
     String cusPh;
     String cusMailAdd;
     System.out.println("-------------------");
-    System.out.println("1.Show Customer");
-    System.out.println("2.Add Customer");
-    System.out.println("3.Update Customer");
-    System.out.println("4.Delete Customer");
+    System.out.println("1.Update Customer");
+    System.out.println("2.Delete Customer");
     System.out.println("-------------------");
     System.out.println("Enter your choice:");
     final int menuOption = option.nextInt();
     switch (menuOption) {
       case 1:
-        showFullCustomer();
-        break;
-      case 2:
-        System.out.println("Enter the cusName");
-        cusName = option.next();
-        System.out.println("Enter the password");
-        cusPwd = option.next();
-        System.out.println("Enter the date of birth");
-        String cusDob = option.next();
-        System.out.println("Enter the phone number");
-        cusPh = option.next();
-        System.out.println("Enter the Address");
-        cusMailAdd = option.next();
-        System.out.println("Enter the Wallet details");
-        float cusWallet = option.nextFloat();
-        int i = CustomerFactory.insertCustomer(cusPwd, cusName, cusDob, cusPh, cusMailAdd, cusWallet);
-        if (i > 0) {
-          System.out.println("inserted succesfully");
-        } else {
-          System.out.println("not inserted");
-        }
-        break;
-      case 3:
         System.out.println("Enter the customer phone");
         cusPh = option.next();
         System.out.println("Enter the customer Id");
@@ -107,7 +82,7 @@ class CliMain {
           System.out.println("not updated");
         }
         break;
-      case 4:
+      case 2:
         System.out.println("Enter the customer phone");
         cusPh = option.next();
         int k = CustomerFactory.deleteCustomer(cusPh);
@@ -117,10 +92,10 @@ class CliMain {
           System.out.println("not deleted");
         }
         break;
-      case 5:
+      case 4:
         Runtime.getRuntime().halt(0);
       default:
-        mainMenu();
+        showFullCustomer();
         break;
     }
   }
@@ -143,30 +118,13 @@ class CliMain {
 
     System.out.println("Vendor Table");
     System.out.println("-------------------");
-    System.out.println("1.Select");
-    System.out.println("2.Insert");
-    System.out.println("3.Update");
-    System.out.println("4.Delete");
+    System.out.println("1.Update");
+    System.out.println("2.Delete");
     System.out.println("-------------------");
     System.out.println("Enter your choice:");
     final int menuOption = option.nextInt();
     switch (menuOption) {
       case 1:
-        showFullVendor();
-        mainMenu();
-        break;
-      case 2:
-        System.out.println("Enter the vendor Name");
-        venName = option.next();
-        int i = VendorFactory.addVendor(venName);
-        if (i > 0) {
-          System.out.println("inserted succesfully");
-        } else {
-          System.out.println("not inserted");
-        }
-        mainMenu();
-        break;
-      case 3:
         System.out.println("Enter the vendor Name");
         venStatus = option.next();
         System.out.println("Enter the vendor Id");
@@ -179,7 +137,7 @@ class CliMain {
         }
         mainMenu();
         break;
-      case 4:
+      case 2:
         System.out.println("Enter the vendor Name");
         venName = option.next();
         int k = VendorFactory.deleteVendor(venName);
@@ -192,6 +150,7 @@ class CliMain {
         break;
       default:
         Runtime.getRuntime().halt(0);
+        showFullVendor();
     }
   }
 
@@ -211,11 +170,9 @@ class CliMain {
   private void showOrder() {
     int ordId;
     String ordItemSel;
-    int ordQty;
     System.out.println("order Table");
     System.out.println("-------------------");
     System.out.println("1.Select");
-    System.out.println("2.Insert");
     System.out.println("3.Update");
     System.out.println("4.Delete");
     System.out.println("-------------------");
@@ -224,21 +181,6 @@ class CliMain {
     switch (menuOption) {
       case 1:
         showFullOrder();
-        mainMenu();
-        break;
-      case 2:
-        System.out.println("Enter the Order date");
-        String ordDate = option.next();
-        System.out.println("Enter the Order item Selected");
-        ordItemSel = option.next();
-        System.out.println("Enter the Order item Quantity");
-        ordQty = option.nextInt();
-        int i = OrdersFactory.insertingORDERS(ordDate, ordItemSel, ordQty);
-        if (i > 0) {
-          System.out.println("inserted succesfully");
-        } else {
-          System.out.println("not inserted");
-        }
         mainMenu();
         break;
       case 3:
@@ -274,7 +216,7 @@ class CliMain {
     final Orders[] orders = OrdersFactory.showOrders();
     System.out.println("CUS_ID" + "\t" + "ORD_ID" + "\t" + "ORD_DATE" + "\t" + "ORD_ITEMSELL" + "\t" + "ORD_QTY" + "ORD_STATUS");
     for (final Orders o : orders) {
-      System.out.format("%3d %3d %10s %15s %5d %15s\n", o.getcusId(),
+      System.out.format("%10d %10d %10s %15s %10d %15s\n", o.getcusId(),
           o.getordId(), o.getordDate(), o.getordItemSel(), o.getordQty(), o.getordStatus());
     }
 
@@ -410,11 +352,12 @@ class CliMain {
     }
   }
   private void showPlaceOrder() {
-    String name;
     int cusId;
-    System.out.println("Enter the customer Name");
-    name = option.next();
-    Customer c = CustomerFactory.showCusWalletBalance(name);
+    String ordDate;
+    String ordStatus;
+    System.out.println("Enter the customer Id");
+    cusId = option.nextInt();
+    Customer c = CustomerFactory.showCusWalletBalance(cusId);
     System.out.println("YOUR WALLET BALANCE : " + c.getcusWallet());
     System.out.println("ENTER FOOD ID");
     int foodId = option.nextInt();
@@ -427,26 +370,71 @@ class CliMain {
       float cuswalbal = c.getcusWallet();
       if (cuswalbal < ordertotcost) {
         System.out.println("INSUFFICIENT BALANCE");
+        ordStatus = "ORDER NOT PLACED ";
       } else {
         System.out.println("YOU HAVE SELECTED THE FOOD : " + m.getfoodId());
         System.out.println("TOTAL COST IS : " + ordertotcost);
         cuswalbal = cuswalbal - ordertotcost;
         System.out.println("Enter the customer Id");
         cusId = option.nextInt();
+        System.out.println("Enter the vendor name");
+        String name = option.next();
+        Vendor v = VendorFactory.showVenWalletBalance(name);
+        float venwalbal = v.getVenWallet();
+        venwalbal = venwalbal + ordertotcost;
+        System.out.println("Enter the vendor Id");
+        int venId = option.nextInt();
+        VendorFactory.updateVendorWalBal(venId, venwalbal);
+        v.setVenWallet(venwalbal);
         CustomerFactory.updateCustomerWalBal(cusId, cuswalbal);
         c.setcusWall(cuswalbal);
         System.out.println("SUCCESFULLY PLACED ORDER AND THE WALLET BALANCE Is : " + cuswalbal);
+        MenuFactory.showFoodName(foodId);
+        String ordItemSel = m.getfoodItemName();
+        Date od = new Date();
+        ordDate = od.toString();
+        ordStatus = "ORDER PLACED";
+        OrdersFactory.insertingorders(cusId, ordItemSel, ordDate, foodquan, ordStatus, ordertotcost);
       }
     }
     System.out.println("ARE YOU STILL HUNGRY----->WANT TO PLACE ANOTHER ORDER(Y/N)?");
     String rePlace = option.next().toUpperCase();
     if (rePlace.equals("Y")) {
       showFullMenu();
-      showPlaceOrder();
     } else {
       System.out.println("Thank you ... come again");
     }
 
+  }
+
+  private  void venValidation() {
+    showFullOrder();
+    int ordId;
+    System.out.println("ENTER  ORDER ID:");
+    ordId = option.nextInt();
+    Orders o = OrdersFactory.validateOrder(ordId);
+    System.out.println(o.getordId());
+    if (ordId == o.getordId()) {
+      System.out.println("ENTER 1 TO ACCEPT THE ORDER");
+      System.out.println("ENTER 2 TO REJECT THE ORDER");
+      int accRej = option.nextInt();
+      switch (accRej) {
+        case 1:
+          System.out.println("ORDER SUCESSFULLY ACCEPTED");
+          break;
+        case 2:
+          Orders order = OrdersFactory.getOrderDetails(ordId);
+          int cusId = order.getcusId();
+          Customer ct = CustomerFactory.showCusWalletBalance(cusId);
+          float walletBalance = ct.getcusWallet() + order.getordCost();
+          CustomerFactory.updateCustomerWalBal(order.getcusId(), walletBalance);
+          System.out.println("Order Rejected ");
+          break;
+        default:
+      }
+    } else {
+      System.out.println("ENTER THE VALID ORDER ID");
+    }
   }
   /**main method is the basic entry point for the application.
    * @param args use to get the user input.
@@ -472,9 +460,10 @@ class CliMain {
     }
   }
   private void startingVendor() {
-    System.out.println("Canteen Management System vendor");
+    System.out.println("VENDOR");
     System.out.println("1.Sign Up");
     System.out.println("2.Log In");
+    System.out.println("3.Exit");
     final int menuOption = option.nextInt();
     switch (menuOption) {
       case 1:
@@ -486,9 +475,9 @@ class CliMain {
         String venPh = option.next();
         int i = VendorFactory.signupVendor(venName, venPwd, venPh);
         if (i > 0) {
-          System.out.println("inserted succesfully");
+          System.out.println("signup succesfully");
         } else {
-          System.out.println("not inserted");
+          System.out.println("try again");
         }
       case 2:
         System.out.println("Enter the venName");
@@ -499,19 +488,21 @@ class CliMain {
         try {
           if (v.getVenName().equals(name) && v.getVenPwd().equals(password)) {
             System.out.println("----------------------------");
-            System.out.println("WELCOME " + name);
+            System.out.println("WELCOME " + name.toUpperCase());
+            venValidation();
             break;
           }
         } catch (Exception e) {
           System.out.println("SORRY ENTER THE VALID NAME AND PASSWORD");
         }
-
+      case 3:
+        Runtime.getRuntime().halt(0);
       default:
         startingVendor();
     }
   }
   private void startingCustomer() {
-    System.out.println("Canteen Management System");
+    System.out.println("CUSTOMER");
     System.out.println("1.Sign Up");
     System.out.println("2.Log In");
     final int menuOption = option.nextInt();
@@ -529,12 +520,7 @@ class CliMain {
         String cusAdd = option.next();
         System.out.println("Enter the Wallet details");
         float cusWallet = option.nextFloat();
-        int i = CustomerFactory.insertCustomer(cusPwd, cusName, cusDob, cusPh, cusAdd, cusWallet);
-        if (i > 0) {
-          System.out.println("inserted succesfully");
-        } else {
-          System.out.println("not inserted");
-        }
+        CustomerFactory.insertCustomer(cusPwd, cusName, cusDob, cusPh, cusAdd, cusWallet);
         startingCustomer();
       case 2:
         System.out.println("Enter the cusName");
@@ -545,14 +531,31 @@ class CliMain {
         try {
           if (c.getcusName().equals(name) && c.getcusPwd().equals(password)) {
             System.out.println("----------------------------");
-            System.out.println("WELCOME  :" + name);
-            System.out.println("WANT TO PLACE ORDER PRESS 1");
-            System.out.println("PRESS ANY NUMBER FOR EXIT");
+            System.out.println("WELCOME  " + name.toUpperCase());
+            System.out.println("1.PLACE ORDER");
+            System.out.println("2.DISPLAY ORDER HISTORY");
+            System.out.println("3.CUSTOMER WALLET");
+            System.out.println("4.EDIT PERSONAL DETAILS");
+            System.out.println("5.FOR EXIT");
             int menu = option.nextInt();
             switch (menu) {
               case 1:
                 showFullMenu();
                 showPlaceOrder();
+                break;
+              case 2:
+              case 3:
+                System.out.println("Enter the customer Id");
+                int cusId = option.nextInt();
+                CustomerFactory.showCusWalletBalance(cusId);
+                System.out.println("YOUR WALLET BALANCE : " + c.getcusWallet());
+                break;
+              case 4:
+                showCustomer();
+                break;
+              case 5:
+                showFullMenu();
+                break;
               default:
                 Runtime.getRuntime().halt(0);
             }
