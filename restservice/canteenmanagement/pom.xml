@@ -33,6 +33,7 @@
                   </files>
                 </requireFilesDontExist>
               </rules>
+              <skip>true</skip>
             </configuration>
           </execution>
         </executions>

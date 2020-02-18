@@ -3,10 +3,6 @@ package com.hexaware.MLP192.factory;
 
 import com.hexaware.MLP192.persistence.OrdersDAO;
 import com.hexaware.MLP192.persistence.DbConnection;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import com.hexaware.MLP192.model.Orders;
 /**
@@ -44,41 +40,22 @@ public class OrdersFactory {
    * @param ordDate order Date
    * @param ordStatus order status
    * @param ordCost order cost
+   * @param venId order cost
    * @return int
    */
   public static int insertingorders(final int cusId, final String ordItemSel, final String ordDate,
-       final int ordQty, final String ordStatus, final float ordCost) {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
-    Date od = setDate(new Date());
-    try {
-      od = sdf.parse(ordDate);
-    } catch (ParseException e) {
-      System.out.println("Enter valid Date");
-    }
-    int i = dao().insertorders(cusId, ordItemSel, ordQty, od, ordStatus, ordCost);
+       final int ordQty, final String ordStatus, final float ordCost, final int venId) {
+    int i = dao().insertorders(cusId, ordItemSel, ordQty, ordDate, ordStatus, ordCost, venId);
     return i;
   }
-  private static Date setDate(final Date ordDate) {
-    return ordDate;
-  }
      /**
-   *
-   * @param ordId customer id
+   * @param tokenId customer id
    * @param ordItemSel items selected
    * @return NN
    */
-  public static int updatingORDERS(final String ordItemSel, final int  ordId) {
-    int j = dao().updateORDERS(ordItemSel, ordId);
+  public static int updatingORDERS(final String ordItemSel, final int  tokenId) {
+    int j = dao().updateORDERS(ordItemSel, tokenId);
     return j;
-  }
-     /**
-   *
-   * @param ordId customer id
-   * @return hh
-   */
-  public static int deletingORDERS(final int ordId) {
-    int k = dao().deleteORDERS(ordId);
-    return k;
   }
    /**
    * @param ordStatus ordStatus
@@ -91,20 +68,28 @@ public class OrdersFactory {
   }
    /**
    * Call the data base connection.
-   * @param ordId for order id.
+   * @param tokenId for order id.
    * @return Orders
    */
-  public static Orders validateOrder(final int ordId) {
-    Orders v = dao().validateOrders(ordId);
+  public static Orders validateOrder(final int tokenId) {
+    Orders v = dao().validateOrders(tokenId);
     return v;
   }
    /**
    * Call the data base connection.
-   * @param ordId for order id.
+   * @param tokenId for order id.
    * @return Orders
    */
-  public static Orders getOrderDetails(final int ordId) {
-    Orders od = dao().getOrderDetails(ordId);
+  public static Orders getOrderDetails(final int tokenId) {
+    Orders od = dao().getOrderDetails(tokenId);
     return od;
+  }
+  /**
+  * @param cusId id
+  * @return  customer  bal.
+  */
+  public static Orders[] showCusOrders(final int cusId) {
+    List<Orders> orders = dao().showCOrders(cusId);
+    return orders.toArray(new Orders[orders.size()]);
   }
 }

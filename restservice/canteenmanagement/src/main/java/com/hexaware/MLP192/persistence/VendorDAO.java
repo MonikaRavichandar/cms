@@ -28,7 +28,7 @@ public interface VendorDAO {
    *  @return the all the Vendor record.
    * @param venId hh
    */
-  @SqlUpdate("update VENDOR set VEN_FSTATUS = (:venStatus) where VEN_ID = (:venId)")
+  @SqlUpdate("update VENDOR set VEN_NO = (:venStatus) where VEN_ID = (:venId)")
   int updatingVendor(@Bind("venStatus")String venStatus, @Bind("venId")int venId);
   /**
    * @param venName insert VENNAME.
@@ -45,7 +45,7 @@ public interface VendorDAO {
 * @return login.
 */
   @SqlQuery("Select * from VENDOR where VEN_NAME = :venName and VEN_PWD = :venPwd")
-@Mapper(VendorMapper.class)
+  @Mapper(VendorMapper.class)
 Vendor loginingVendor(@Bind("venName") String venName, @Bind("venPwd") String venPwd);
 /**
 * @param venWallet customer wallet
@@ -55,11 +55,11 @@ Vendor loginingVendor(@Bind("venName") String venName, @Bind("venPwd") String ve
   @SqlUpdate("Update VENDOR SET VEN_WALLET = :venWallet where VEN_ID = :venId")
 int updatingVendorWal(@Bind("venId") int venId, @Bind("venWallet") float venWallet);
   /**
-*@param venName customer id
+*@param venId customer id
 * @return login.
 */
-  @SqlQuery("Select * from VENDOR where VEN_NAME = :venName")
-@Mapper(VendorMapper.class)
-Vendor showvenWalBal(@Bind("venName") String venName);
+  @SqlQuery("Select * from VENDOR where VEN_ID = :venId")
+  @Mapper(VendorMapper.class)
+Vendor showvenWalBal(@Bind("venId") int venId);
 
 }

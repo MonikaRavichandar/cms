@@ -13,7 +13,7 @@ public class Menu {
   private int foodId;
   private String foodItemName;
   private Float foodItemAmt;
-  private int cusId;
+  private int venId;
   /**
    * Default Constructor.
    * @param i for integer
@@ -25,14 +25,14 @@ public class Menu {
  * @param argfoodId to initialize food id.
  * @param argfoodItemName to initialize food name.
  * @param argfoodItemAmt to initialize food amount.
- * @param argcusId to initialize customer Id.
+ * @param argvenId to initialize customer Id.
  * used to get details through constructor.
  */
-  public Menu(final int argfoodId, final String argfoodItemName, final float argfoodItemAmt, final int argcusId) {
+  public Menu(final int argfoodId, final String argfoodItemName, final float argfoodItemAmt, final int argvenId) {
     this.foodId = argfoodId;
     this.foodItemName = argfoodItemName;
     this.foodItemAmt = argfoodItemAmt;
-    this.cusId = argcusId;
+    this.venId = argvenId;
   }
 /**
  * @par to initialize food id.
@@ -49,7 +49,7 @@ public class Menu {
     }
     final Menu menu = (Menu) obj;
     if (Objects.equals(foodId, menu.foodId) || Objects.equals(foodItemName, menu.foodItemName)
-        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(cusId, menu.cusId)) {
+        || Objects.equals(foodItemAmt, menu.foodItemAmt) || Objects.equals(venId, menu.venId)) {
       return true;
     }
     return false;
@@ -58,7 +58,7 @@ public class Menu {
   @Override
 
      public final int hashCode() {
-    return Objects.hash(foodId, foodItemName, foodItemAmt, cusId);
+    return Objects.hash(foodId, foodItemName, foodItemAmt, venId);
   }
 /**
 * @return this food Id.
@@ -81,8 +81,8 @@ public class Menu {
 /**
 * @return this cus Id.
 */
-  public final int getcusId() {
-    return cusId;
+  public final int getvenId() {
+    return venId;
   }
   /**
    * @param argfoodId gets the food id.
@@ -103,10 +103,10 @@ public class Menu {
     this.foodItemAmt = argfoodItemAmt;
   }
   /**
-   * @param argcusId gets the customer Id.
+   * @param argvenId gets the customer Id.
    */
-  public final void setcusId(final int argcusId) {
-    this.cusId = argcusId;
+  public final void setcusId(final int argvenId) {
+    this.venId = argvenId;
 
   }
 }

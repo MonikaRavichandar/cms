@@ -101,6 +101,14 @@ public class CustomerFactory {
     int customer = dao().updatingCustomerWal(cusId, cusWallet);
     return customer;
   }
+   /**
+  * @param cusId id
+  * @return  customer  bal.
+  */
+  public static Customer viewCustomer(final int cusId) {
+    Customer customer = dao().showCustomer(cusId);
+    return customer;
+  }
 }
 
 

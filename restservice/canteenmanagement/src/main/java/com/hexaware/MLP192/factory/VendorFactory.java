@@ -86,7 +86,7 @@ public class VendorFactory {
   * @param name id
   * @return  customer  bal.
   */
-  public static Vendor showVenWalletBalance(final String name) {
+  public static Vendor showVenWalletBalance(final int name) {
     Vendor vendor = dao().showvenWalBal(name);
     return vendor;
   }

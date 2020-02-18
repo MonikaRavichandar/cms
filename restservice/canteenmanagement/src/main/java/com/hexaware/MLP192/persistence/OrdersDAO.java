@@ -4,8 +4,6 @@ import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
-
-import java.util.Date;
 import java.util.List;
 import com.hexaware.MLP192.model.Orders;
 /**
@@ -26,35 +24,30 @@ public interface OrdersDAO {
     *@param ordDate order Date.
      * @param ordStatus items selected.
      * @param ordCost items cost
+     * @param venId items cost
     * @return int
     */
-  @SqlUpdate("Insert into ORDERS (CUS_ID, ORD_ITEMSEL, ORD_QTY, ORD_DATE, ORD_STATUS, ORD_COST)"
-      + " VALUES(:cusId, :ordItemSel, :ordQty, :ordDate, :ordStatus, :ordCost)")
+  @SqlUpdate("Insert into ORDERS (CUS_ID, ORD_ITEMSEL, ORD_QTY, ORD_DATE, ORD_STATUS, ORD_COST, VEN_ID)"
+      + " VALUES(:cusId, :ordItemSel, :ordQty, :ordDate, :ordStatus, :ordCost, :venId)")
   int insertorders(@Bind("cusId") int cusId,
       @Bind("ordItemSel") String ordItemSel, @Bind("ordQty") int ordQty,
-      @Bind("ordDate") Date ordDate, @Bind("ordStatus") String ordStatus, @Bind("ordCost") float ordCost);
+      @Bind("ordDate") String ordDate, @Bind("ordStatus") String ordStatus, @Bind("ordCost") float ordCost, @Bind("venId") int venId);
    /**
-    *@param ordId items id
+    *@param tokenId items id
     * @param ordItemSel items selected.
     * @return hh
     */
-  @SqlUpdate("Update ORDERS set ORD_ITEMSEL = (:ordItemSel) where ORD_ID = (:ordId)")
-   int updateORDERS(@Bind("ordItemSel")String ordItemSel, @Bind("ordId")int ordId);
-    /**
-    * @param ordId customer id
-    * @return hh
-    */
-  @SqlUpdate("Delete FROM  ORDERS where ORD_ID = :ordId")
- int deleteORDERS(@Bind("ordId")int ordId);
+  @SqlUpdate("Update ORDERS set ORD_ITEMSEL = (:ordItemSel) where TOKEN_ID = (:tokenId)")
+   int updateORDERS(@Bind("ordItemSel")String ordItemSel, @Bind("tokenId")int tokenId);
   /**
-    * @param ordId customer id
+    * @param tokenId customer id
     * @param ordItemSel items selected.
     * @param cusId items selected.
     * @param ordQty items selected.
     * @return hh
     */
-  @SqlQuery("select * from ORDERS where CUS_ID = :cusId, ORD_ID = : ordId, ORDITEMSEL = :ordItemSel, ORD_QTY = :ordQty")
-    Orders showOrderMenu(@Bind("cusId")int cusId, @Bind("ordId")int ordId, @Bind("ordItemSel")String ordItemSel, @Bind("ordQty")int ordQty);
+  @SqlQuery("select * from ORDERS where CUS_ID = :cusId, TOKEN_ID = : tokenId, ORDITEMSEL = :ordItemSel, ORD_QTY = :ordQty")
+    Orders showOrderMenu(@Bind("cusId")int cusId, @Bind("tokenId")int tokenId, @Bind("ordItemSel")String ordItemSel, @Bind("ordQty")int ordQty);
   /**
     * @param ordStatus update order status
     * @param cusId customer id
@@ -63,27 +56,35 @@ public interface OrdersDAO {
   @SqlUpdate("Update Orders SET ORD_STATUS = :ordStatus where CUS_ID = :cusId")
   int updateOrStatus(@Bind("cusId") int cusId, @Bind("ordStatus") String ordStatus);
   /**
-   * @param ordId for order id.
+   * @param tokenId for order id.
    * @return the cust Id.
    */
-  @SqlQuery("select * from Orders where ORD_ID = :ordId")
+  @SqlQuery("select * from ORDERS where TOKEN_ID = :tokenId")
   @Mapper(OrdersMapper.class)
-  Orders validateOrders(@Bind("ordId") int ordId);
+  Orders validateOrders(@Bind("tokenId") int tokenId);
 
   /**
-   * @param ordId for order id.
+   * @param tokenId for order id.
    * @param ordStatus for order Status
    * @return update the status.
    */
-  @SqlUpdate("Update Orders SET ORD_STATUS =:ordStatus where ORD_ID = :ordId")
+  @SqlUpdate("Update Orders SET ORD_STATUS =:ordStatus where TOKEN_ID = :tokenId")
   @Mapper(OrdersMapper.class)
-  int delivered(@Bind("ordId") int ordId, @Bind("ordStatus")String ordStatus);
+  int delivered(@Bind("tokenId") int tokenId, @Bind("ordStatus")String ordStatus);
 
   /**
-   * @param ordId form order id.
+   * @param tokenId form order id.
    * @return them based on order Id.
    */
-  @SqlQuery("Select * from Orders where ORD_ID = :ordId")
+  @SqlQuery("Select * from ORDERS where TOKEN_ID = :tokenId")
   @Mapper(OrdersMapper.class)
-  Orders getOrderDetails(@Bind("ordId") int ordId);
+  Orders getOrderDetails(@Bind("tokenId") int tokenId);
+   /**
+   * @param cusId for order id.
+   * @return the cust Id.
+   */
+  @SqlQuery("select * from ORDERS where CUS_ID = :cusId")
+  @Mapper(OrdersMapper.class)
+  List<Orders> showCOrders(@Bind("cusId") int cusId);
+
 }

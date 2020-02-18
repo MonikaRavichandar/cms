@@ -20,10 +20,13 @@ public interface MenuDAO {
      /**
      * @return the all the Vendor record.
      * @param foodItemName insert foodItemName.
+     * @param foodAmnt amount of food
+     * @param venId vendor id
      * @param foodId insert food id
      */
-  @SqlUpdate("Insert into MENU(FOOD_ID, FOOD_ITEMNAME)" + " Values(:foodId, :foodItemName)")
-   int addingMenu(@Bind("foodId")int foodId, @Bind("foodItemName")String foodItemName);
+  @SqlUpdate("Insert into MENU(FOOD_ID, FOOD_ITEMNAME, FOOD_ITEMAMT, VEN_ID)" + " Values(:foodId, :foodItemName, :foodAmnt, :venId)")
+   int addingMenu(@Bind("foodId")int foodId, @Bind("foodItemName")String foodItemName,
+        @Bind("foodAmnt")float foodAmnt, @Bind("venId")int venId);
   /**
    * @param foodItemName delete foodItemName.
    * @return the all the Menu record.

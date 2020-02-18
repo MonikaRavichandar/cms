@@ -16,9 +16,7 @@ public class Vendor {
    venWallet to store venWall.
  */
   private int venId;
-  private int cusId;
   private String venName;
-  private String venStatus;
   private String venNo;
   private float venWallet;
   private String venPwd;
@@ -31,20 +29,16 @@ public class Vendor {
 
   /**
   * @param argVenId to initialize venId.
-  * @param argCusId to initialize cusId.
   * @param argVenName to initialize venName.
-  * @param argVenStatus to initialize venStatus.
   * @param argVenNo to initialize venNo.
   *@param argVenWallet to initialize venWallet.
   *@param argVenPwd to initialize venWallet.
   * used to get details through constructor.
    */
-  public Vendor(final int  argVenId, final int argCusId, final String argVenName,
-       final String argVenPwd, final String argVenStatus, final String argVenNo, final float argVenWallet) {
+  public Vendor(final int  argVenId, final String argVenName,
+       final String argVenPwd, final String argVenNo, final float argVenWallet) {
     this.venId = argVenId;
-    this.cusId = argCusId;
     this.venName = argVenName;
-    this.venStatus = argVenStatus;
     this.venNo = argVenNo;
     this.venWallet = argVenWallet;
     this.venPwd = argVenPwd;
@@ -59,8 +53,8 @@ public class Vendor {
       return false;
     }
     Vendor vendor = (Vendor) obj;
-    if (Objects.equals(venId, vendor.venId) || Objects.equals(cusId, vendor.cusId) || Objects.equals(venName, vendor.venName)
-          || Objects.equals(venStatus, vendor.venStatus) || Objects.equals(venNo, vendor.venNo)
+    if (Objects.equals(venId, vendor.venId) || Objects.equals(venName, vendor.venName)
+          || Objects.equals(venNo, vendor.venNo)
           || Objects.equals(venWallet, vendor.venWallet) || Objects.equals(venPwd, vendor.venPwd)) {
       return true;
     }
@@ -68,7 +62,7 @@ public class Vendor {
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(venId, cusId, venName, venStatus, venNo, venWallet, venPwd);
+    return Objects.hash(venId, venName, venNo, venWallet, venPwd);
   }
 
     /**
@@ -76,13 +70,6 @@ public class Vendor {
      */
   public final int getVenId() {
     return venId;
-  }
-   /**
-     * @return this cusID.
-     */
-
-  public final int getCusId() {
-    return cusId;
   }
   /**
      * @return this cusID.
@@ -96,12 +83,6 @@ public class Vendor {
      */
   public final String getVenName() {
     return venName;
-  }
-  /**
-     * @return this VenStatus.
-     */
-  public final String getVenStatus() {
-    return venStatus;
   }
   /**
      * @return this VenNo.
@@ -122,22 +103,10 @@ public class Vendor {
     this.venId = argVenId;
   }
   /**
-     * @param argCusId gets the  cusId.
-     */
-  public final void setCusId(final int argCusId) {
-    this.cusId = argCusId;
-  }
-  /**
      * @param argVenName gets the  venName.
      */
   public final void setVenName(final String argVenName) {
     this.venName = argVenName;
-  }
-  /**
-     * @param argVenStatus gets the  venStatus.
-     */
-  public final void setVenStatus(final String argVenStatus) {
-    this.venStatus = argVenStatus;
   }
    /**
      * @param argVenNo gets the  cusId.

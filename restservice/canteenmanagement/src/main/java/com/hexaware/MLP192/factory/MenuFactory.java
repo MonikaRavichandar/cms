@@ -36,10 +36,12 @@ public class MenuFactory {
    * Call the data base connection.
    * @param foodItemName insert foodItemName.
    * @param foodId insert
+   * @param foodAmnt food Amnt
+   * @param venId vendor id
    * @return the array of Menu object.
    */
-  public static int addMenu(final int foodId, final String foodItemName) {
-    int i = dao().addingMenu(foodId, foodItemName);
+  public static int addMenu(final int foodId, final String foodItemName, final float foodAmnt, final int venId) {
+    int i = dao().addingMenu(foodId, foodItemName, foodAmnt, venId);
     return i;
   }
    /**

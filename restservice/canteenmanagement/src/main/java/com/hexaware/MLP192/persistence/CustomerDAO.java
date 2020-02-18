@@ -77,4 +77,11 @@ int updatingCustomer(@Bind("cusPh") String cusPh, @Bind("cusId") int cusId);
    */
   @SqlUpdate("Update Customer Set CUST_WALLET = :updateWallet Where CUS_ID =:cusId")
   int updateCustWalletBalance(@Bind("cusId") int cusId, @Bind("updateWallet") float updateWallet);
+     /**
+*@param cusId customer id
+* @return login.
+*/
+  @SqlQuery("Select * from CUSTOMER where CUS_ID = :cusId")
+  @Mapper(CustomerMapper.class)
+  Customer showCustomer(@Bind("cusId") int cusId);
 }
