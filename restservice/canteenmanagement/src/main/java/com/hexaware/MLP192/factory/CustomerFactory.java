@@ -49,12 +49,14 @@ public class CustomerFactory {
       final String cusPh, final String cusAdd, final float cusWallet) {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date od = null;
+    java.sql.Date cusdobdate = null;
     try {
       od = sdf.parse(cusDob);
+      cusdobdate = new java.sql.Date(od.getTime());
     } catch (ParseException e) {
       System.out.println("Enter valid Date");
     }
-    int i = dao().addingCustomer(cusName, cusPwd, od, cusPh, cusAdd, cusWallet);
+    int i = dao().addingCustomer(cusName, cusPwd, cusdobdate, cusPh, cusAdd, cusWallet);
     return i;
   }
   /**
@@ -63,17 +65,8 @@ public class CustomerFactory {
    * @return returning.
    */
   public static Customer loginCustomer(final String cusName, final String cusPwd) {
-    Customer customer = dao().loginingCustomer(cusName, cusPwd);
+    Customer customer = dao().loginCus(cusName, cusPwd);
     return customer;
-  }
-
-  /**
-   * @param cusPh phone
-   * @return the array of customer object.
-   */
-  public static int deleteCustomer(final String cusPh) {
-    int j = dao().deletingCustomer(cusPh);
-    return j;
   }
   /**
    * @param cusPh phone

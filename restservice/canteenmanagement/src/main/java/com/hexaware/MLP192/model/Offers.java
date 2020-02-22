@@ -8,9 +8,9 @@ import java.util.Date;
 
 public class Offers {
 
-  private int cusId;
-  private int ordId;
-  private int venId;
+  private int fcusId;
+  private int fordId;
+  private int fvenId;
   private String food;
   private String coupCode;
   private Date coupDate;
@@ -30,9 +30,9 @@ public class Offers {
    */
   public Offers(final int argCusId, final int argOrdId, final int argVenId, final String argFood,
       final String argCoupCode, final Date argCoupDate) {
-    this.cusId = argCusId;
-    this.ordId = argOrdId;
-    this.venId = argVenId;
+    this.fcusId = argCusId;
+    this.fordId = argOrdId;
+    this.fvenId = argVenId;
     this.food = argFood;
     this.coupCode = argCoupCode;
     this.coupDate = argCoupDate;
@@ -48,7 +48,7 @@ public class Offers {
       return false;
     }
     Offers bal = (Offers) obj;
-    if (Objects.equals(cusId, bal.cusId) || Objects.equals(ordId, bal.ordId) || Objects.equals(venId, bal.venId)
+    if (Objects.equals(fcusId, bal.fcusId) || Objects.equals(fordId, bal.fordId) || Objects.equals(fvenId, bal.fvenId)
           || Objects.equals(food, bal.food) || Objects.equals(coupCode, bal.coupCode) || Objects.equals(coupDate, bal.coupDate)) {
       return true;
     }
@@ -57,25 +57,25 @@ public class Offers {
 
   @Override
     public final int hashCode() {
-    return Objects.hash(cusId, ordId, venId, food, coupCode, coupDate);
+    return Objects.hash(fcusId, fordId, fvenId, food, coupCode, coupDate);
   }
   /**
      * @return this cusId.
      */
   public final int getCusId() {
-    return cusId;
+    return fcusId;
   }
   /**
      * @return this walBal.
      */
   public final int getOrdId() {
-    return ordId;
+    return fordId;
   }
   /**
      * @return this walPayid.
      */
   public final int getVenId() {
-    return venId;
+    return fvenId;
   }
   /**
      * @return this walTotamt.
@@ -99,19 +99,19 @@ public class Offers {
      * @param argCusId gets the cus id.
      */
   public final void setCusId(final int argCusId) {
-    this.cusId = argCusId;
+    this.fcusId = argCusId;
   }
   /**
      * @param argOrdId gets the wal bal.
      */
   public final void setOrdId(final int argOrdId) {
-    this.ordId = argOrdId;
+    this.fordId = argOrdId;
   }
   /**
      * @param argVenId gets the wal pay id.
      */
   public final void setVenId(final int argVenId) {
-    this.venId = argVenId;
+    this.fvenId = argVenId;
   }
   /**
      * @param argFood the wal tot amt.

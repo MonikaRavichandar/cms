@@ -6,7 +6,7 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import com.hexaware.MLP192.model.Customer;
@@ -37,12 +37,6 @@ int addingCustomer(@Bind("cusName")String cusName, @Bind("cusPwd")String cusPwd,
        @Bind("od")Date od, @Bind("cusPh")String cusPh, @Bind("cusMailAdd")String cusMailAdd, @Bind("cusWallet")float cusWallet);
 /**
 * @param cusPh customer ph
-* @return the all the Customer record.
-*/
-  @SqlUpdate("Delete FROM  customer where CUS_PH = :cusPh")
-int deletingCustomer(@Bind("cusPh")String cusPh);
-/**
-* @param cusPh customer ph
 * @param cusId customer id
 *@return the all the Customer record.
 */
@@ -55,7 +49,7 @@ int updatingCustomer(@Bind("cusPh") String cusPh, @Bind("cusId") int cusId);
 */
   @SqlQuery("Select * from CUSTOMER where CUS_NAME = :cusName and CUS_PWD = :cusPwd")
   @Mapper(CustomerMapper.class)
-    Customer loginingCustomer(@Bind("cusName") String cusName, @Bind("cusPwd") String cusPwd);
+    Customer loginCus(@Bind("cusName") String cusName, @Bind("cusPwd") String cusPwd);
     /**
 *@param cusId customer id
 * @return login.
@@ -70,13 +64,7 @@ int updatingCustomer(@Bind("cusPh") String cusPh, @Bind("cusId") int cusId);
 */
   @SqlUpdate("Update Customer SET CUS_WALLET = :cusWallet where CUS_ID = :cusId")
   int updatingCustomerWal(@Bind("cusId") int cusId, @Bind("cusWallet") float cusWallet);
-  /**
-   * @param cusId  to get Customer Customer Id.
-   * @param updateWallet to update Customer Wallet Balance.
-   * @return the all the Customer record.
-   */
-  @SqlUpdate("Update Customer Set CUST_WALLET = :updateWallet Where CUS_ID =:cusId")
-  int updateCustWalletBalance(@Bind("cusId") int cusId, @Bind("updateWallet") float updateWallet);
+
      /**
 *@param cusId customer id
 * @return login.

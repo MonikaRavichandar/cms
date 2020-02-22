@@ -1,8 +1,9 @@
 
 package com.hexaware.MLP192.util;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import com.hexaware.MLP192.factory.CustomerFactory;
@@ -47,17 +48,18 @@ class OrdersUtil {
    */
   public void showFullMenu() {
     final Menu[] menu = MenuFactory.showMenu();
-    System.out.println("food_Id" + "\t" + "food_ItemName" + "\t" + "food_ItemAmt" + "\t" + "cus_Id");
+    System.out.println("food_Id" + "\t" + "food_ItemName" + "\t" + "food_ItemAmt" + "\t" + "ven_Id");
     for (final Menu m : menu) {
-      System.out.format("%3d %15s %15f %10s %n", m.getfoodId(), m.getfoodItemName(), m.getfoodItemAmt(), m.getvenId());
+      System.out.format("%3d %15s %15f %10s %n", m.getfoodId(), m.getfoodItemName(), m.getfoodItemAmt(), m.getmVenId());
     }
   }
 
   /**
    * CliMain used as Client interface for java coding.
+   * @throws ParseException throws
    * @Magudi-hexware
    */
-  public void showPlaceOrder() {
+  public void showPlaceOrder() throws ParseException {
     showFullMenu();
     int cusId;
     String ordStatus;
@@ -79,35 +81,68 @@ class OrdersUtil {
         ordStatus = "ORDER NOT PLACED ";
       } else {
         System.out.println("YOU HAVE SELECTED THE FOOD : " + m.getfoodId());
-        System.out.println("TOTAL COST IS : " + ordertotcost);
-        cuswalbal = cuswalbal - ordertotcost;
         System.out.println("Enter the vendor Id");
         int venId = option.nextInt();
         Vendor v = VendorFactory.showVenWalletBalance(venId);
         float venwalbal = v.getVenWallet();
+        MenuFactory.showFoodName(foodId);
+        String ordItemSel = m.getfoodItemName();
         venwalbal = venwalbal + ordertotcost;
         VendorFactory.updateVendorWalBal(venId, venwalbal);
         v.setVenWallet(venwalbal);
-        CustomerFactory.updateCustomerWalBal(cusId, cuswalbal);
-        c.setcusWall(cuswalbal);
-        System.out.println("SUCCESFULLY PLACED ORDER AND THE WALLET BALANCE Is : " + cuswalbal);
-        MenuFactory.showFoodName(foodId);
-        String ordItemSel = m.getfoodItemName();
-        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime localDate = LocalDateTime.now();
-        String date = dtf.format(localDate);
-        ordStatus = "ORDER PLACED";
-        OrdersFactory.insertingorders(cusId, ordItemSel, date, foodquan, ordStatus, ordertotcost, venId);
+        System.out.println("IS ANY COUPON YOU HAVE (Y/N) ??????");
+        String rePlace = option.next().toUpperCase();
+        if (rePlace.equals("Y")) {
+          System.out.println("YOU ARE ALREADY HAVE COUPON");
+          SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+          Calendar cal = Calendar.getInstance();
+          String dat =  sdf.format(cal.getTime());
+          cal.add(Calendar.DAY_OF_MONTH, 15);
+          String endDate = sdf.format(cal.getTime());
+          Date d1 = sdf.parse(dat);
+          Date d2 = sdf.parse(endDate);
+          if ((d1.compareTo(d2) < 0)) {
+            float cost = foodcost;
+            if (cost > 100) {
+              float totCost = cost - 100;
+              Customer ct = CustomerFactory.showCusWalletBalance(cusId);
+              float customerWal = ct.getcusWallet() + totCost;
+              CustomerFactory.updateCustomerWalBal(cusId, customerWal);
+            } else {
+              System.out.println("PURCHASE ABOVE 200 TO USE COUPON");
+            }
+          }
+        } else {
+          System.out.println("GOOD NEWS!!!!!!! YOU HAVE A COUPON FOR THIS ORDER");
+          String coupon = "FREE2020";
+          SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+          Calendar cal = Calendar.getInstance();
+          String dat =  sdf.format(cal.getTime());
+          cal.add(Calendar.DAY_OF_MONTH, 15);
+          String endDate = sdf.format(cal.getTime());
+          Date d1 = sdf.parse(dat);
+          Date d2 = sdf.parse(endDate);
+          OffersFactory.insertOffers(cusId, venId, ordItemSel, coupon, d1);
+          if (ordertotcost > 100) {
+            float ordcost  = ordertotcost - 100;
+            System.out.println("TOTAL COST IS : " + ordertotcost);
+            cuswalbal = cuswalbal - ordertotcost;
+            CustomerFactory.updateCustomerWalBal(cusId, cuswalbal);
+            c.setcusWall(cuswalbal);
+            System.out.println("SUCCESFULLY PLACED ORDER AND THE WALLET BALANCE Is : " + cuswalbal);
+            ordStatus = "ORDER PLACED";
+            OrdersFactory.insertingorders(cusId, ordItemSel, dat, foodquan, ordStatus, ordcost, venId);
+          }
+        }
+      }
+      System.out.println("ARE YOU STILL HUNGRY----->WANT TO PLACE ANOTHER ORDER(Y/N)?");
+      String rePlace = option.next().toUpperCase();
+      if (rePlace.equals("Y")) {
+        showFullMenu();
+      } else {
+        System.out.println("Thank you ... come again");
       }
     }
-    System.out.println("ARE YOU STILL HUNGRY----->WANT TO PLACE ANOTHER ORDER(Y/N)?");
-    String rePlace = option.next().toUpperCase();
-    if (rePlace.equals("Y")) {
-      showFullMenu();
-    } else {
-      System.out.println("Thank you ... come again");
-    }
-
   }
 
   /**
@@ -132,22 +167,6 @@ class OrdersUtil {
           System.out.println("ORDER SUCESSFULLY ACCEPTED");
           String ordStatus = "ORDER ACCEPTED";
           OrdersFactory.updateOrdStatus(cusId, ordStatus);
-          if (cusId ==  OffersFactory.getOfCusId(cusId)) {
-            System.out.println("Welcome to GOODFOODS");
-            String coupon = "FREE2020";
-            Date dat = new Date();
-            OffersFactory.insertOffers(cusId, tokenId, o.getVenId(), o.getordItemSel(), coupon, dat);
-          } else if (cusId != OffersFactory.getOfCusId(cusId)) {
-            Date offDate = OffersFactory.getDate(cusId);
-            Date dat = new Date();
-            int d  = dat.getDate();
-            int od = offDate.getDate();
-            od = od + 10;
-            if (d <= od) {
-
-            }
-            System.out.println("YOU ARE ALREADY HAVE COUPON");
-          }
           break;
         case 2:
           OrdersFactory.getOrderDetails(tokenId);

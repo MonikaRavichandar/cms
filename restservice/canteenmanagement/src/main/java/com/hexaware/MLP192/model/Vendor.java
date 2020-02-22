@@ -44,6 +44,15 @@ public class Vendor {
     this.venPwd = argVenPwd;
 
   }
+  /**
+   * @param argVenName vendor name
+   * @param argVenPwd vendor pwd
+   */
+  public Vendor(final String argVenName, final String argVenPwd) {
+    this.venName = argVenName;
+    this.venPwd = argVenPwd;
+  }
+
   @Override
     public final boolean equals(final Object obj) {
     if (obj == null) {

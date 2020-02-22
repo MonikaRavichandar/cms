@@ -1,6 +1,7 @@
 package com.hexaware.MLP192.factory;
 
 import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 
@@ -55,11 +56,11 @@ public class VendorFactoryTest {
    */
   @Test
   public final void loginVendor(@Mocked final VendorDAO dao) {
-    final Vendor v1 = new Vendor(101, "goodfoods", "food123", "9344552124", 40);
+    final Vendor v1 = new Vendor("goodfoods", "food123");
     new Expectations() {
       {
         System.out.println("mocked get vendor login");
-        dao.loginingVendor("goodfoods", "food123");
+        dao.loginingVendor("GoodFoods", "goodfoods123");
         result = v1;
       }
     };
@@ -70,7 +71,7 @@ public class VendorFactoryTest {
         return dao;
       }
     };
-    Vendor ca = VendorFactory.loginVendor("goodfoods", "food123");
+    Vendor ca = VendorFactory.loginVendor("GoodFoods", "goodfoods123");
     assertEquals(v1, ca);
   }
 
@@ -80,7 +81,7 @@ public class VendorFactoryTest {
    */
   @Test
   public final void showVenWalletBalance(@Mocked final VendorDAO dao) {
-    final Vendor expectedS = new Vendor(101, "goodfoods", "food123", "9344552124", 40);
+    final Vendor expectedS = new Vendor(100, "GoodFoods", "goodfoods123", "9344552124", 40);
     new Expectations() {
       {
         System.out.println("Mocked find a Vendor");
@@ -100,26 +101,26 @@ public class VendorFactoryTest {
   }
   /**
    * tests that customer wallet is handled correctly.
-   * @param cdao mocking the dao class
+   * @param dao mocking the dao class
    */
   @Test
-  public final void signupVendor(@Mocked final VendorDAO cdao) {
-    //final Vendor signS = new Vendor("goodfoods", "food123", "9344552124");
+  public final void signupVendor(@Mocked final VendorDAO dao) {
+    //final Vendor signS = new Vendor("GoodFoods", "food123", "9344552124");
     new Expectations() {
       {
         System.out.println("Mocked find a Vendor");
-        cdao.signingVendor("goodfoods", "food123", "9344552124");
+        dao.signingVendor("GoodFoods", "goodfoods123", "9344552124");
         result = 1;
       }
     };
     new MockUp<VendorFactory>() {
       @Mock
-      VendorDAO cdao() {
+      VendorDAO dao() {
         System.out.println("Mocked Vendor Dao");
-        return cdao;
+        return dao;
       }
     };
-    int signerS = VendorFactory.signupVendor("goodfoods", "food123", "9344552124");
+    int signerS = VendorFactory.signupVendor("GoodFoods", "goodfoods123", "9344552124");
     assertEquals(1, signerS);
   }
   /**
@@ -132,7 +133,7 @@ public class VendorFactoryTest {
     new Expectations() {
       {
         System.out.println("Mocked find a Vendor");
-        dao.updatingVendorWal(101, 40);
+        dao.updatingVendorWal(100, 990);
         result = 1;
       }
     };
@@ -143,7 +144,7 @@ public class VendorFactoryTest {
         return dao;
       }
     };
-    int updaterU = VendorFactory.updateVendorWalBal(101, 40);
+    int updaterU = VendorFactory.updateVendorWalBal(100, 990);
     assertEquals(1, updaterU);
   }
 }

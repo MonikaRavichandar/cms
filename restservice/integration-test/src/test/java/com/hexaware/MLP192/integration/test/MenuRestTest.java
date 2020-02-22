@@ -27,14 +27,14 @@ public class MenuRestTest {
 	assertEquals(1001, res[0].getVendorId());
 	}
 
-    @Test
+  @Test
 	public void testFoodDetails() throws AssertionError, URISyntaxException {
 	Menu m = given().
                   accept(ContentType.JSON).
 				  when().
                   get(CommonUtil.getURI("/api/menu/FoodDetails/101")).
-				  getBody().as(Menu.class);
-	assertEquals(101, m.getFoodId());
+					getBody().as(Menu.class);
+  assertEquals(101, m.getFoodId());
 	assertEquals("Dosa", m.getMenuName());
 	assertEquals(80, m.getPrice(), 0.1);
 	assertEquals(1001, m.getVendorId());
@@ -45,5 +45,4 @@ public class MenuRestTest {
 		given().accept(ContentType.JSON).when()
 		.get(CommonUtil.getURI("/api/menu/1010")).then().assertThat().statusCode(404);
 	}
-	
 }

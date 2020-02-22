@@ -18,12 +18,6 @@ public interface VendorDAO {
     @Mapper(VendorMapper.class)
     List<Vendor> showVend();
   /**
-   * @param venName delete VENNAME.
-   * @return the all the Vendor record.
-   */
-  @SqlUpdate("Delete from VENDOR where VEN_NAME = :venName")
-  int deletingVendor(@Bind("venName")String venName);
-  /**
    * @param venStatus update VENSTATUS.
    *  @return the all the Vendor record.
    * @param venId hh
@@ -38,7 +32,7 @@ public interface VendorDAO {
    */
   @SqlUpdate("Insert into Vendor (VEN_NAME, VEN_PWD, VEN_NO)"
       + " values(:venName, :venPwd, :venNo)")
-  int signingVendor(@Bind("venName")String venName, @Bind("venPwd")String venPwd, @Bind("venNO")String venNo);
+  int signingVendor(@Bind("venName")String venName, @Bind("venPwd")String venPwd, @Bind("venNo")String venNo);
  /**
 * @param venName vendor ph
 * @param venPwd vendor id

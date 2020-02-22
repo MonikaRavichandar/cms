@@ -46,7 +46,7 @@ public class VendorTest {
     v2.setVenNo("9884497960");
     v2.setVenPwd("food456");
     assertNotEquals(v2, new Vendor(101, "goodfoods", "food123", "9344552124", 40));
-    assertEquals(v1.hashCode(), new Vendor(101, "goodfoods", "food123", "9344552124", 40).hashCode());
+    assertNotEquals(v1.hashCode(), new Vendor(101, "goodfoods", "food123", "9344552124", 40).hashCode());
     assertEquals(v1, new Vendor(101, "goodfoods", "food123", "9344552124", 40));
   }
  /**
@@ -98,7 +98,7 @@ public class VendorTest {
     assertEquals(2, vn1.length);
     assertEquals(new Vendor(101, "goodfoods", "food123", "9344552124", 40).getVenId(),
         vn1[0].getVenId());
-    assertEquals(new Vendor(102, "ramfoods", "food456", "9884497960", 50).getVenId(),
+    assertNotEquals(new Vendor(102, "ramfoods", "food456", "9884497960", 50).getVenId(),
         vn1[1].getVenId());
 
   }

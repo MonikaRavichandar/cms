@@ -18,21 +18,20 @@ public interface OffersDAO {
   /**
      * @return the all the Wallet record.
      */
-  @SqlQuery("Select * from Wallet")
+  @SqlQuery("Select * from Offers")
     @Mapper(OffersMapper.class)
     List<Offers> showWall();
     /**
      * @param cusId for customer id
      * @param venId for wallet balance
-     * @param ordId for payment id
      * @param foodName for total amount
      * @param coupCode for payment date
      * @param coupDate for date
      *  @return the all the Wallet record.
      */
-  @SqlUpdate("Insert into Offers(CUS_ID, ORD_ID, VEN_ID, FOOD_NAME, COUP_CODE, COUP_DATE)"
+  @SqlUpdate("Insert into Offers(CUS_ID, VEN_ID, FOOD_NAME, COUP_CODE, COUP_DATE)"
       + " VALUES(:cusId, :ordId, :venId, :foodName, :coupCode, :coupDate)")
-int insertingOffers(@Bind("cusId") int cusId, @Bind("ordId") int ordId, @Bind("venId") int venId,
+int insertingOffers(@Bind("cusId") int cusId, @Bind("venId") int venId,
       @Bind("foodName") String foodName, @Bind("coupCode") String coupCode, @Bind("coupDate") Date coupDate);
 /**
  * @return the all the Wallet record.
@@ -45,6 +44,6 @@ int insertingOffers(@Bind("cusId") int cusId, @Bind("ordId") int ordId, @Bind("v
  *  @param cusId for customer id
  * **/
   @SqlQuery("Select * from OFFERS where CUS_ID = :cusId")
-    Date gettingDoB(int cusId);
+    Date gettingDate(@Bind("cusId") int cusId);
 }
 

@@ -31,22 +31,21 @@ public class OffersFactory {
    * Call the data base connection.
    * @return the array of offers object.
    */
-  public static Offers[] showWallet() {
+  public static Offers[] showOffers() {
     List<Offers> offers = dao().showWall();
     return offers.toArray(new Offers[offers.size()]);
   }
   /**
    * @param  cusId id
-   * @param ordId bal
    * @param venId paymentid
    * @param foodName total amt
    * @param coupCode paydate
    * @param coupDate date
    * @return  i
    * */
-  public static int insertOffers(final int cusId, final int ordId, final int venId,
+  public static int insertOffers(final int cusId, final int venId,
       final String foodName, final String coupCode, final Date coupDate) {
-    int i = dao().insertingOffers(cusId, ordId, venId, foodName, coupCode, coupDate);
+    int i = dao().insertingOffers(cusId, venId, foodName, coupCode, coupDate);
     return i;
   }
   /**
@@ -62,7 +61,7 @@ public class OffersFactory {
    * @return j
    * */
   public static Date getDate(final int cusId) {
-    Date j = dao().gettingDoB(cusId);
+    Date j = dao().gettingDate(cusId);
     return j;
   }
 }

@@ -41,6 +41,13 @@ public class Orders {
     this.ordCost = argOrdCost;
     this.venId = argVenId;
   }
+  /**
+   * Default Constructor.
+   * @param tid for integer
+   */
+  public Orders(final int tid) {
+    this.tokenId = tid;
+  }
   @Override
 public final boolean equals(final Object obj) {
     if (obj == null) {

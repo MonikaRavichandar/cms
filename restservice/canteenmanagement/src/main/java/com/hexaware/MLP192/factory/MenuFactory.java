@@ -46,15 +46,6 @@ public class MenuFactory {
   }
    /**
    * Call the data base connection.
-   * @param foodItemName to delete Menu name.
-   * @return the array of Menu object.
-   */
-  public static int deleteMenu(final String foodItemName) {
-    int j = dao().deletingMenu(foodItemName);
-    return j;
-  }
-   /**
-   * Call the data base connection.
    * @param foodItemAmt to update Menu status.
    * @param foodId to update Menu status.
    * @return the array of Menu object.

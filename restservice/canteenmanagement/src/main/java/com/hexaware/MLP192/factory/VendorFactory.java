@@ -32,16 +32,7 @@ public class VendorFactory {
     List<Vendor> vendor = dao().showVend();
     return vendor.toArray(new Vendor[vendor.size()]);
   }
-   /**
-   * Call the data base connection.
-   * @param venName to delete vendor name.
-   * @return the array of Vendor object.
-   */
-  public static int deleteVendor(final String venName) {
-    int j = dao().deletingVendor(venName);
-    return j;
-  }
-   /**
+     /**
    * Call the data base connection.
    * @param venStatus to update vendor status.
    * @return the array of Vendor object.
@@ -56,11 +47,11 @@ public class VendorFactory {
    * Call the data base connection.
    * @param venName insert VENNAME.
    * @param venPwd insert VenPwd.
-   * @param venPh insert VenPh.
+   * @param venNo insert VenPh.
    * @return the array of Vendor object.
    */
-  public static int signupVendor(final String venName, final String venPwd, final String venPh) {
-    int i = dao().signingVendor(venName, venPwd, venPh);
+  public static int signupVendor(final String venName, final String venPwd, final String venNo) {
+    int i = dao().signingVendor(venName, venPwd, venNo);
     return i;
   }
   /**

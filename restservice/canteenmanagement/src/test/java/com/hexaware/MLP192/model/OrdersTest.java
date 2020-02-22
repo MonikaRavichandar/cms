@@ -29,7 +29,6 @@ import java.util.Date;
  */
 @RunWith(JMockit.class)
 public class OrdersTest {
-  private Orders orders;
   private Date pDate = new Date();
   private Date pDate1 = new Date();
   private SimpleDateFormat sdf;
@@ -59,7 +58,7 @@ public class OrdersTest {
     final Orders o101 = new Orders(103, 2, pDate1, "idly", 2, "ORDER PLACED", 40f, 100);
     assertNotEquals(o100, null);
     assertNotEquals(o101, null);
-    assertEquals(o100, new Orders(103, 1, pDate, "idly", 3, "ORDER PLACED", 60f, 100).gettokenId());
+    assertEquals(o100.gettokenId(), new Orders(103, 1, pDate, "idly", 3, "ORDER PLACED", 60f, 100).gettokenId());
     assertEquals(o101, new Orders(103, 2, pDate1, "idly", 2, "ORDER PLACED", 40f, 100));
     assertEquals(o100.hashCode(), new Orders(103, 1, pDate, "idly", 3, "ORDER PLACED", 60f, 100).hashCode());
     assertEquals(o100, new Orders(103, 1, pDate, "idly", 3, "ORDER PLACED", 60f, 100));

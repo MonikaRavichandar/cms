@@ -44,79 +44,110 @@ public class MenuFactoryTest {
       }
     };
 
-    Menu[] cb1 = MenuFactory.showMenu();
-    assertEquals(cb, cb1);
+    final Menu[] cb1 = MenuFactory.showMenu();
+    assertEquals(cb, cb1[0]);
   }
+
   /**
    * tests that adding menu is handled correctly.
+   *
    * @param dao mocking the dao class
    */
   @Test
-  public final void addMenu(@Mocked final MenuDAO dao) {
-    final Menu am = new Menu(101, "dosa", 40f, 100);
+  public final void testAddMenu(@Mocked final MenuDAO dao) {
+  //final Menu am = new Menu(101, "dosa", 40f, 100);
     new Expectations() {
       {
         System.out.println("Mocked find Menu");
         dao.addingMenu(101, "dosa", 40f, 100);
-        result = am;
+        result = 1;
       }
     };
     new MockUp<MenuFactory>() {
       @Mock
-       MenuDAO dao() {
+      MenuDAO dao() {
         System.out.println("Mocked Menu Dao");
         return dao;
       }
     };
-    int am1 = MenuFactory.addMenu(101, "dosa", 40f, 100);
-    assertEquals(am, am1);
+    final int am1 = MenuFactory.addMenu(101, "dosa", 40f, 100);
+    assertEquals(1, am1);
   }
- /**
+
+  /**
    * tests that updating menu is handled correctly.
    * @param dao mocking the dao class
    */
   @Test
-  public final void updatingMenu(@Mocked final MenuDAO dao) {
-    final Menu up = new Menu(100, null, 40f, 0);
+  public final void testUpdatingMenu(@Mocked final MenuDAO dao) {
+   // final Menu up = new Menu(101, null, 40f, 0);
+    int expected = 1;
     new Expectations() {
       {
         System.out.println("Mocked find Menu");
-        dao.updatingMenu(100, 40f);
-        result = up;
+        dao.updatingMenu(101, 40f);
+        result = 1;
       }
     };
     new MockUp<MenuFactory>() {
       @Mock
-       MenuDAO dao() {
+      MenuDAO dao() {
         System.out.println("Mocked Menu Dao");
         return dao;
       }
     };
-    int up1 = MenuFactory.updateMenu(100, 40f);
-    assertEquals(up, up1);
+    final int up1 = MenuFactory.updateMenu(101, 40f);
+    assertEquals(expected, up1);
+  }
+/**
+   * tests that updating menu is handled correctly.
+   * @param dao mocking the dao class
+   */
+  @Test
+  public final void testShowCost(@Mocked final MenuDAO dao) {
+   // final Menu up = new Menu(101, null, 40f, 0);
+    final Menu cb = new Menu(101);
+    new Expectations() {
+      {
+        System.out.println("Mocked find Menu");
+        dao.showfoodCost(101);
+        result = cb;
+      }
+    };
+    new MockUp<MenuFactory>() {
+      @Mock
+      MenuDAO dao() {
+        System.out.println("Mocked Menu Dao");
+        return dao;
+      }
+    };
+    final Menu up1 = MenuFactory.showCost(101);
+    assertEquals(cb, up1);
   }
   /**
    * tests that updating menu is handled correctly.
    * @param dao mocking the dao class
    */
   @Test
-  public final void chooseMenu(@Mocked final MenuDAO dao) {
-    final Menu ch = new Menu(100, null, 40f, 0);
+  public final void testShowFood(@Mocked final MenuDAO dao) {
+   // final Menu up = new Menu(101, null, 40f, 0);
+    final Menu cb = new Menu(101);
     new Expectations() {
       {
         System.out.println("Mocked find Menu");
-        dao.show();
-        result = ch;
+        dao.showfName(101);
+        result = cb;
       }
     };
     new MockUp<MenuFactory>() {
       @Mock
-       MenuDAO dao() {
+      MenuDAO dao() {
         System.out.println("Mocked Menu Dao");
         return dao;
       }
     };
-    Menu[] ch1 = MenuFactory.showMenu();
-    assertEquals(ch, ch1);
+    final Menu up1 = MenuFactory.showFoodName(101);
+    assertEquals(cb, up1);
   }
+
 }
